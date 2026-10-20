@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FBF0B9" />
+      <stop offset="25%" stop-color="#E5C365" />
+      <stop offset="55%" stop-color="#D4AF37" />
+      <stop offset="85%" stop-color="#99771A" />
+      <stop offset="100%" stop-color="#E5C365" />
+    </linearGradient>
+    <radialGradient id="bgGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#241E1C" />
+      <stop offset="65%" stop-color="#141110" />
+      <stop offset="100%" stop-color="#0A0807" />
+    </radialGradient>
+    <filter id="goldGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Background circle with dark warm obsidian tone -->
+  <circle cx="256" cy="256" r="248" fill="url(#bgGlow)" />
+  
+  <!-- Outer decorative gold border rings -->
+  <circle cx="256" cy="256" r="236" fill="none" stroke="url(#goldGradient)" stroke-width="5" opacity="0.9" />
+  <circle cx="256" cy="256" r="226" fill="none" stroke="url(#goldGradient)" stroke-width="1.5" stroke-dasharray="3 5" opacity="0.6" />
+
+  <!-- Radiating Star / Diamond at top -->
+  <g transform="translate(256, 120)">
+    <!-- 8-point luxury diamond sparkle -->
+    <path d="M 0,-34 L 5,-10 L 28,-14 L 11,2 L 24,22 L 3,11 L -2,32 L -7,10 L -26,18 L -12,-1 L -28,-14 L -5,-9 Z" fill="url(#goldGradient)" filter="url(#goldGlow)" />
+    <!-- Bright center diamond -->
+    <circle cx="0" cy="0" r="4.5" fill="#FFFFFF" />
+  </g>
+
+  <!-- Monogram MB in High-End Parisian Serif -->
+  <g fill="url(#goldGradient)" filter="url(#goldGlow)">
+    <!-- Letter M -->
+    <path d="M 140,360 L 140,210 L 175,210 L 222,308 L 226,308 L 273,210 L 308,210 L 308,360 L 280,360 L 280,246 L 278,246 L 235,336 L 213,336 L 170,246 L 168,246 L 168,360 Z" />
+    <!-- Letter B (Interlocking) -->
+    <path d="M 288,210 L 350,210 C 378,210 395,224 395,246 C 395,263 384,275 368,280 C 388,285 402,299 402,322 C 402,347 382,360 350,360 L 288,360 Z M 316,234 L 316,272 L 347,272 C 362,272 368,264 368,253 C 368,242 362,234 347,234 Z M 316,296 L 316,336 L 350,336 C 366,336 374,327 374,316 C 374,304 365,296 348,296 Z" opacity="0.95" />
+  </g>
+
+  <!-- Subtle subline: PARIS -->
+  <text x="256" y="405" font-family="'Cormorant Garamond', Georgia, serif" font-size="28" font-weight="600" letter-spacing="12" fill="url(#goldGradient)" text-anchor="middle" opacity="0.9">
+    PARIS
+  </text>
+</svg>
