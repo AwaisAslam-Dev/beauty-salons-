@@ -50,11 +50,11 @@ import expert2 from "@/assets/expert2.jpg";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Nourish Spa — The Art of Feeling Beautiful" },
+      { title: "Red ruj Salon — The Art of Feeling Beautiful" },
       {
         name: "description",
         content:
-          "Luxury beauty spa — hair styling, balayage, bridal, facials, nails & makeup. Book your experience at Nourish Spa, Riyadh.",
+          "Luxury beauty spa — hair styling, balayage, bridal, facials, nails & makeup. Book your experience at Red ruj Salon, Riyadh.",
       },
     ],
   }),
@@ -307,7 +307,7 @@ function Header() {
         {/* Logo */}
         <a href="#top" className="flex flex-col leading-none shrink-0">
           <span className="font-serif text-[1.15rem] sm:text-xl tracking-[0.2em]">
-            NOURISH SPA
+            Red ruj Salon
           </span>
         </a>
 
@@ -364,7 +364,7 @@ function Header() {
         }}>
           <div>
             <div style={{ fontFamily: "Cormorant Garamond, Georgia, serif", fontSize: "1.1rem", letterSpacing: "0.2em", color: "#1a1410" }}>
-              NOURISH SPA
+              Red ruj Salon
             </div>
           </div>
           <button
@@ -1086,7 +1086,7 @@ function Booking() {
 
             {/* Salon image */}
             <Reveal mask delay={200} className="aspect-[4/3] overflow-hidden mb-8">
-              <img src={salon} alt="Nourish Spa salon" className="w-full h-full object-cover" loading="lazy" />
+              <img src={salon} alt="Red ruj Salon " className="w-full h-full object-cover" loading="lazy" />
             </Reveal>
 
             {/* Contact info */}
@@ -1324,7 +1324,7 @@ function Contact() {
 
         {/* Salon image */}
         <Reveal mask delay={120} className="min-h-[320px] sm:min-h-[420px] lg:col-span-7">
-          <img src={salon} alt="Nourish Spa interior"
+          <img src={salon} alt="Red ruj Salon interior"
             className="w-full h-full object-cover min-h-[320px] sm:min-h-[420px]" loading="lazy" />
         </Reveal>
       </div>
@@ -1361,7 +1361,7 @@ function Footer() {
         {/* Grid */}
         <div className="grid gap-10 py-12 sm:py-14 grid-cols-2 sm:grid-cols-4">
           <div>
-            <p className="font-serif text-lg tracking-[0.2em] mb-4">NOURISH SPA</p>
+            <p className="font-serif text-lg tracking-[0.2em] mb-4">Red ruj Salon</p>
             <p className="text-white/45 text-sm leading-relaxed">
               A private spa for hair, skin and artistry in Riyadh.
             </p>
@@ -1402,7 +1402,7 @@ function Footer() {
 
         {/* Bottom bar */}
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pt-6 border-t border-white/10">
-          <p className="text-[0.7rem] text-white/30">© {year} Nourish Spa. All rights reserved.</p>
+          <p className="text-[0.7rem] text-white/30">© {year} Red ruj Salon. All rights reserved.</p>
           <div className="flex gap-5">
             <a href="#" className="text-[0.7rem] text-white/30 link-lux hover:text-white/60 transition-colors">Privacy</a>
             <a href="#" className="text-[0.7rem] text-white/30 link-lux hover:text-white/60 transition-colors">Terms</a>
