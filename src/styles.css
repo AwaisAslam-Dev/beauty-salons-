@@ -46,8 +46,8 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-rose: var(--rose);
-  --font-serif: "Cormorant Garamond", Georgia, serif;
-  --font-sans: "Jost", system-ui, sans-serif;
+  --font-serif: "Cairo", "Cormorant Garamond", "Amiri", Georgia, serif;
+  --font-sans: "Tajawal", "Cairo", "Jost", system-ui, -apple-system, sans-serif;
 }
 
 :root {
@@ -342,4 +342,29 @@
   }
   .scroll-dot { animation: none; }
   html { scroll-behavior: auto; }
+}
+
+/* ── RTL & Arabic Typography Adjustments ─────────────────────── */
+[dir="rtl"] {
+  text-align: right;
+}
+
+[dir="rtl"] .eyebrow {
+  letter-spacing: 0.08em;
+}
+
+[dir="rtl"] .btn-primary,
+[dir="rtl"] .btn-outline,
+[dir="rtl"] .btn-white,
+[dir="rtl"] .pill {
+  letter-spacing: 0.04em;
+}
+
+[dir="rtl"] .link-lux::after {
+  left: auto;
+  right: 0;
+  transform-origin: right;
+}
+[dir="rtl"] .link-lux:hover::after {
+  transform-origin: left;
 }

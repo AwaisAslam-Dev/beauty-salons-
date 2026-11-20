@@ -14,21 +14,20 @@ import {
   FiMapPin,
   FiClock,
   FiInstagram,
-  FiArrowRight,
+  FiArrowLeft,
   FiCheck,
   FiX,
   FiMenu,
   FiCalendar,
   FiUser,
-  FiChevronLeft,
-  FiChevronRight,
-  FiStar,
   FiScissors,
-  FiExternalLink,
+  FiStar,
+  FiHeart,
+  FiShield,
 } from "react-icons/fi";
 import {
-  FaPinterestP,
   FaTiktok,
+  FaWhatsapp,
 } from "react-icons/fa";
 import {
   PiFlowerLotusThin,
@@ -44,17 +43,21 @@ import hair from "@/assets/hair.jpg";
 import facial from "@/assets/facial.jpg";
 import bridal from "@/assets/bridal.jpg";
 import nails from "@/assets/nails.jpg";
-import expert1 from "@/assets/expert1.jpg";
-import expert2 from "@/assets/expert2.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Red ruj Salon — The Art of Feeling Beautiful" },
+      { title: "صالون ريد روج | Red ruj Salon — الرياض، المملكة العربية السعودية" },
       {
         name: "description",
         content:
-          "Luxury beauty spa — hair styling, balayage, bridal, facials, nails & makeup. Book your experience at Red ruj Salon, Riyadh.",
+          "صالون ريد روج (Red ruj Salon) النسائي الفاخر في الرياض — خدمات تصفيف وصبغات الشعر، العناية بالبشرة، الأظافر، والمكياج في أجنحة خاصة تسودها الخصوصية التامة والراحة.",
+      },
+      { property: "og:title", content: "صالون ريد روج | Red ruj Salon" },
+      {
+        property: "og:description",
+        content:
+          "صالون نسائي فاخر للشعر، البشرة، الأظافر والمكياج في الرياض — احجزي موعدكِ الآن لتجربة جمال استثنائية.",
       },
     ],
   }),
@@ -62,158 +65,131 @@ export const Route = createFileRoute("/")({
 });
 
 /* ══════════════════════════════════════════════════════════════
-   DATA
+   DATA & CONFIGURATION
 ══════════════════════════════════════════════════════════════ */
 
-const FRESHA_URL =
-  "https://www.fresha.com/a/nourish-spa-riyadh-nwrsh-sb-nourish-spa-prince-mohammed-ibn-salman-ibn-abdulaziz-rd-al-aqiq-riyadh-13515-saudi-arabia-hsbv4j96/all-offer?menu=true&share=true&pId=2724593&fbclid=PAZXh0bgNhZW0CMTEAcGRvZgJzcnRjBmFwcF9pZA85MzY2MTk3NDMzOTI0NTkAAadTfsn9n4wWgCDESd-Vz2ftICx_OlasB8iQZI_5xSdd3zwKG5UAxVufgPB-yw_aem_jojJRMYhKpPy9sTVOfhMJQ&utm_source=ig&utm_medium=social&utm_content=link_in_bio&utm_id=97760_v0_s00_e0_tv3";
+const BRAND = {
+  nameEn: "Red ruj Salon",
+  nameAr: "صالون ريد روج",
+  tagline: "فن الجمال والأناقة الهادئة",
+};
 
 const CONTACT = {
-  phone: "+966 (0) 000 000 000",
-  email: "hello@nourishspa.sa",
-  address: "Prince Mohammed ibn Salman ibn Abdulaziz Rd, Al Aqiq, Riyadh 13515, Saudi Arabia",
-  instagram: "https://www.instagram.com/nourishspa.sa/",
-  pinterest: "#",
-  tiktok: "#",
+  phone: "+966 50 000 0000",
+  phoneDisplay: "050 000 0000",
+  email: "info@redrujsalon.com",
+  address: "المملكة العربية السعودية، الرياض — حي العقيق، طريق الأمير محمد بن سلمان",
+  instagram: "https://www.instagram.com/red_ruj_salon/?hl=en",
+  whatsapp:
+    "https://wa.me/966500000000?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D8%B5%D8%A7%D9%84%D9%88%D9%86%20%D8%B1%D9%8A%D8%AF%20%D8%B1%D9%88%D8%AC%20(Red%20ruj%20Salon)%D8%8C%20%D8%A3%D9%88%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D8%AD%D8%AC%D8%B2%20%D9%85%D9%88%D8%B9%D8%AF.",
+  tiktok: "https://www.tiktok.com",
 };
 
 const SERVICES = [
   {
     id: "hair-styling",
     icon: <FiScissors className="w-5 h-5" />,
-    title: "Hair Styling",
-    subtitle: "Cuts & Blow-outs",
-    desc: "Precision cuts and couture blow-outs sculpted to your silhouette.",
-    duration: "60–75 min",
-    price: "From €95",
+    title: "تصفيف وتسريح الشعر",
+    subtitle: "قص احترافي وسشوار مميز",
+    desc: "قصات شعر دقيقة وسشوار مخصص يبرز ملامحكِ وتألق إطلالتكِ بأيدي خبيرات محترفات.",
+    duration: "60–75 دقيقة",
+    price: "ابتداءً من 200 ر.س",
     img: hair,
-    category: "Hair",
+    category: "الشعر",
   },
   {
     id: "hair-colour",
     icon: <PiFlowerLotusThin className="w-5 h-5" />,
-    title: "Hair Colour",
-    subtitle: "Balayage & Gloss",
-    desc: "Hand-painted balayage, gloss melting and dimensional colour.",
-    duration: "120–180 min",
-    price: "From €165",
+    title: "صبغات الشعر والبالياج",
+    subtitle: "بالياج متدرج ورنساج فاخر",
+    desc: "تدرجات ألوان ساحرة وتقنيات بالياج عصرية تمنح شعركِ عمقاً وحيوية ولمعاناً لا يقاوم.",
+    duration: "120–180 دقيقة",
+    price: "ابتداءً من 450 ر.س",
     img: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=80",
     fallback: hair,
-    category: "Colour",
+    category: "الصبغات",
   },
   {
     id: "bridal",
     icon: <PiHandHeartThin className="w-5 h-5" />,
-    title: "Bridal Atelier",
-    subtitle: "Hair & Makeup",
-    desc: "Bespoke hair and makeup for the most photographed day.",
-    duration: "Half / Full Day",
-    price: "By consultation",
+    title: "جناح العروس الملكي",
+    subtitle: "شعر ومكياج عرائسي متكامل",
+    desc: "عناية خاصة واستثنائية لأجمل أيام حياتكِ، تتضمن بروفة للشعر والمكياج في جناح خاص ومستقل.",
+    duration: "نصف يوم / يوم كامل",
+    price: "حسب الاستشارة",
     img: bridal,
-    category: "Bridal",
+    category: "العرائس",
   },
   {
     id: "facials",
     icon: <PiFlowerLotusThin className="w-5 h-5" />,
-    title: "Sculpting Facials",
-    subtitle: "Lift & Radiance",
-    desc: "Buccal sculpting and botanical micro-infusions for lasting lift.",
-    duration: "75–90 min",
-    price: "From €145",
+    title: "جلسات نضارة وشد البشرة",
+    subtitle: "تنظيف عميق ونضارة فورية",
+    desc: "جلسات تنظيف عميق وتقشير لطيف ومساج شد الوجه لإعادة النضارة والإشراق الطبيعي لبشرتكِ.",
+    duration: "75–90 دقيقة",
+    price: "ابتداءً من 350 ر.س",
     img: facial,
-    category: "Skin",
+    category: "البشرة",
   },
   {
     id: "skincare",
     icon: <PiHandHeartThin className="w-5 h-5" />,
-    title: "Cellular Skincare",
-    subtitle: "Personalised Programmes",
-    desc: "Custom skin health programmes and deep dermal hydration.",
-    duration: "60 min",
-    price: "From €125",
+    title: "عناية متقدمة وتجديد البشرة",
+    subtitle: "برامج ترطيب وترميم مكثفة",
+    desc: "برامج عناية مخصصة لنوع بشرتكِ مع ترطيب عميق ومغذيات مركزة من أرقى المنتجات العالمية.",
+    duration: "60 دقيقة",
+    price: "ابتداءً من 300 ر.س",
     img: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=800&q=80",
     fallback: facial,
-    category: "Skin",
+    category: "البشرة",
   },
   {
     id: "nails",
     icon: <FiStar className="w-5 h-5" />,
-    title: "Nail Artistry",
-    subtitle: "Russian Manicures",
-    desc: "Dry hardware cuticle work and understated editorial nail art.",
-    duration: "75–90 min",
-    price: "From €70",
+    title: "عناية بالأظافر (مانيكير وبديكير)",
+    subtitle: "مانيكير روسي وديزاين راقٍ",
+    desc: "تنظيف الجلد الجاف بدقة متناهية وألوان كلاسيكية وعصرية تدوم طويلاً بلمسات أنيقة وفاخرة.",
+    duration: "60–75 دقيقة",
+    price: "ابتداءً من 180 ر.س",
     img: nails,
-    category: "Nails",
+    category: "الأظافر",
   },
   {
     id: "makeup",
     icon: <FiStar className="w-5 h-5" />,
-    title: "Editorial Makeup",
-    subtitle: "Artistry",
-    desc: "Red carpet and evening looks by our resident artistry team.",
-    duration: "60–75 min",
-    price: "From €120",
+    title: "مكياج سهرة ومناسبات",
+    subtitle: "إطلالات فخمة وجذابة",
+    desc: "مكياج سينمائي وسهرات بأجود الماركات العالمية يبرز جمالكِ بلمسات راقية تناسب كافة المناسبات.",
+    duration: "60–75 دقيقة",
+    price: "ابتداءً من 350 ر.س",
     img: "https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?auto=format&fit=crop&w=800&q=80",
     fallback: heroDesktop,
-    category: "Makeup",
+    category: "المكياج",
   },
 ];
 
 const GALLERY_ITEMS = [
-  { id: "g1",  src: hair,    fallback: hair,    alt: "Couture blow-out",          cat: "Hair",   title: "Gloss & Silk",        span: "col-span-1 md:col-span-7", aspect: "aspect-[4/3]" },
-  { id: "g2",  src: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=900&q=80", fallback: hair,  alt: "Balayage colour",  cat: "Colour", title: "Sun-Kissed Balayage", span: "col-span-1 md:col-span-5", aspect: "aspect-[4/3]" },
-  { id: "g3",  src: bridal,  fallback: bridal,  alt: "Bridal styling",            cat: "Bridal", title: "Bridal Atelier",      span: "col-span-1 md:col-span-5", aspect: "aspect-[4/3]" },
-  { id: "g4",  src: facial,  fallback: facial,  alt: "Sculpting facial",          cat: "Skin",   title: "Sculpting Facial",    span: "col-span-1 md:col-span-7", aspect: "aspect-[4/3]" },
-  { id: "g5",  src: "https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?auto=format&fit=crop&w=900&q=80", fallback: heroDesktop, alt: "Editorial makeup", cat: "Makeup", title: "Editorial Artistry", span: "col-span-1 md:col-span-4", aspect: "aspect-square" },
-  { id: "g6",  src: nails,   fallback: nails,   alt: "Russian manicure",          cat: "Nails",  title: "Quiet Luxury Nails",  span: "col-span-1 md:col-span-4", aspect: "aspect-square" },
-  { id: "g7",  src: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=900&q=80", fallback: facial, alt: "Skincare ritual",  cat: "Skin",   title: "Radiance Infusion",  span: "col-span-1 md:col-span-4", aspect: "aspect-square" },
-  { id: "g8",  src: heroDesktop, fallback: heroDesktop, alt: "Golden beauty portrait", cat: "Makeup", title: "Golden Hour Portrait", span: "col-span-1 md:col-span-7", aspect: "aspect-[16/9]" },
-  { id: "g9",  src: salon,   fallback: salon,   alt: "Salon interior",            cat: "Salon",  title: "The Atelier",         span: "col-span-1 md:col-span-5", aspect: "aspect-[4/3]" },
-  { id: "g10", src: "https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=900&q=80", fallback: hair, alt: "Precision haircut", cat: "Hair",   title: "Precision Cut",      span: "col-span-1 md:col-span-5", aspect: "aspect-[4/3]" },
-  { id: "g11", src: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=900&q=80", fallback: bridal, alt: "Bride portrait", cat: "Bridal", title: "Chantilly Bride",    span: "col-span-1 md:col-span-7", aspect: "aspect-[16/9]" },
-  { id: "g12", src: "https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=900&q=80",  fallback: hair, alt: "Brunette colour",  cat: "Colour", title: "Brunette Melt",      span: "col-span-1 md:col-span-5", aspect: "aspect-[4/3]" },
+  { id: "g1",  src: hair,    fallback: hair,    alt: "تصفيف شعر احترافي",          cat: "الشعر",   title: "شعر حريري ولامع",        span: "col-span-1 md:col-span-7", aspect: "aspect-[4/3]" },
+  { id: "g2",  src: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=900&q=80", fallback: hair,  alt: "صبغات وبالياج",  cat: "الصبغات", title: "بالياج بتدرجات طبيعية", span: "col-span-1 md:col-span-5", aspect: "aspect-[4/3]" },
+  { id: "g3",  src: bridal,  fallback: bridal,  alt: "تسريحة عروس",            cat: "العرائس", title: "إطلالة عروس ساحرة",      span: "col-span-1 md:col-span-5", aspect: "aspect-[4/3]" },
+  { id: "g4",  src: facial,  fallback: facial,  alt: "جلسة نضارة البشرة",          cat: "البشرة",   title: "جلسة إشراق ونضارة",    span: "col-span-1 md:col-span-7", aspect: "aspect-[4/3]" },
+  { id: "g5",  src: "https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?auto=format&fit=crop&w=900&q=80", fallback: heroDesktop, alt: "مكياج سهرة", cat: "المكياج", title: "مكياج سهرة راقٍ", span: "col-span-1 md:col-span-4", aspect: "aspect-square" },
+  { id: "g6",  src: nails,   fallback: nails,   alt: "مانيكير روسي راقٍ",          cat: "الأظافر",  title: "أظافر أنيقة وهادئة",  span: "col-span-1 md:col-span-4", aspect: "aspect-square" },
+  { id: "g7",  src: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=900&q=80", fallback: facial, alt: "عناية بالبشرة",  cat: "البشرة",   title: "ترطيب وتغذية مكثفة",  span: "col-span-1 md:col-span-4", aspect: "aspect-square" },
+  { id: "g8",  src: heroDesktop, fallback: heroDesktop, alt: "إطلالة مكياج مميزة", cat: "المكياج", title: "جمال الملامح والتألق", span: "col-span-1 md:col-span-7", aspect: "aspect-[16/9]" },
+  { id: "g9",  src: salon,   fallback: salon,   alt: "أجواء صالون ريد روج",            cat: "الصالون",  title: "أجواء الصالون الفاخرة",         span: "col-span-1 md:col-span-5", aspect: "aspect-[4/3]" },
+  { id: "g10", src: "https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=900&q=80", fallback: hair, alt: "قصة شعر عصرية", cat: "الشعر",   title: "قص وتشكيل متقن",      span: "col-span-1 md:col-span-5", aspect: "aspect-[4/3]" },
+  { id: "g11", src: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=900&q=80", fallback: bridal, alt: "عروس متألقة", cat: "العرائس", title: "أناقة العروس الملكية",    span: "col-span-1 md:col-span-7", aspect: "aspect-[16/9]" },
+  { id: "g12", src: "https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=900&q=80",  fallback: hair, alt: "صبغة شعر بنية",  cat: "الصبغات", title: "تدرجات الشوكولاتة والكراميل",      span: "col-span-1 md:col-span-5", aspect: "aspect-[4/3]" },
 ];
 
-const GALLERY_CATS = ["All", "Hair", "Colour", "Bridal", "Skin", "Makeup", "Nails", "Salon"];
-
-const TEAM = [
-  {
-    src: expert1,
-    name: "Sofia Laurent",
-    role: "Creative Director",
-    specialty: "Master Balayage & Colour",
-    bio: "15 years of Parisian craft. Renowned for seamless dimensional tone graduation and unhurried bespoke consultations.",
-  },
-  {
-    src: expert2,
-    name: "Julien Moreau",
-    role: "Head of Makeup Artistry",
-    specialty: "Editorial & Bridal Looks",
-    bio: "Fashion Week artist and editorial specialist. Creates luminous, breathable skin that looks effortless all night.",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80",
-    fallback: expert1,
-    name: "Élise Fontaine",
-    role: "Lead Aesthetician",
-    specialty: "Sculpting & Dermal Health",
-    bio: "Certified in clinical botanical skin health and advanced buccal massage. Formulates custom programmes for each client.",
-  },
-];
-
-const TESTIMONIALS = [
-  { q: "The most serene appointment I have experienced. The balayage catches light like silk.", a: "Isabelle R.", s: "Balayage Client" },
-  { q: "Julien understood my bridal vision before I found the words. Flawless from first light to last dance.", a: "Amara K.", s: "Bridal Atelier" },
-  { q: "Élise's sculpting facial removed weeks of fatigue in ninety minutes. Pure vitality.", a: "Valentina S.", s: "Sculpting Facial" },
-  { q: "Colour mastery on par with the finest ateliers in Paris. Truly unhurried and discreet.", a: "Charlotte M.", s: "Colour Client" },
-];
+const GALLERY_CATS = ["الكل", "الشعر", "الصبغات", "العرائس", "البشرة", "المكياج", "الأظافر", "الصالون"];
 
 const HOURS = [
-  ["Tuesday – Friday", "10:00 – 20:00"],
-  ["Saturday",         "09:00 – 18:00"],
-  ["Sunday",           "By appointment"],
-  ["Monday",           "Closed"],
+  ["السبت – الأربعاء", "1:00 ظهراً – 10:00 مساءً"],
+  ["الخميس",           "1:00 ظهراً – 11:00 مساءً"],
+  ["الجمعة",           "2:00 ظهراً – 10:00 مساءً"],
+  ["الأحد",            "متاح بالحجز المسبق"],
 ];
 
 /* ══════════════════════════════════════════════════════════════
@@ -225,7 +201,6 @@ function useInView<T extends HTMLElement>() {
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    // Immediately reveal if already in viewport
     const rect = el.getBoundingClientRect();
     if (rect.top < window.innerHeight + 100) { el.classList.add("in"); return; }
     const io = new IntersectionObserver(
@@ -256,7 +231,7 @@ function Reveal({
 function Img({
   src, fallback, alt, className = "", eager = false,
 }: {
-  src: string; fallback?: string; alt: string; className?: string; eager?: boolean;
+  src: string; fallback?: string | undefined; alt: string; className?: string; eager?: boolean;
 }) {
   const [cur, setCur] = useState(src);
   useEffect(() => { setCur(src); }, [src]);
@@ -288,58 +263,69 @@ function Header() {
   }, [open]);
 
   const links: [string, string][] = [
-    ["Services",  "#services"],
-    ["Gallery",   "#gallery"],
-    ["Our Story", "#story"],
-    ["Experts",   "#experts"],
-    ["Contact",   "#contact"],
+    ["الخدمات والأسعار", "#services"],
+    ["معرض الأعمال",   "#gallery"],
+    ["عن الصالون",     "#story"],
+    ["حجز موعد",       "#book"],
+    ["الموقع والتواصل", "#contact"],
   ];
 
   return (
     <>
-    <header className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
-      solid || open
-        ? "bg-[oklch(0.982_0.008_82)]/97 backdrop-blur-md shadow-sm border-b border-border/50 py-3 text-foreground"
-        : "py-5 text-white"
-    }`}>
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-10">
+      <header className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
+        solid || open
+          ? "bg-[oklch(0.982_0.008_82)]/97 backdrop-blur-md shadow-sm border-b border-border/50 py-3 text-foreground"
+          : "py-5 text-white"
+      }`}>
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-10">
 
-        {/* Logo */}
-        <a href="#top" className="flex flex-col leading-none shrink-0">
-          <span className="font-serif text-[1.15rem] sm:text-xl tracking-[0.2em]">
-            Red ruj Salon
-          </span>
-        </a>
+          {/* Logo */}
+          <a href="#top" className="flex flex-col leading-none shrink-0 group">
+            <span className="font-serif text-lg sm:text-2xl font-bold tracking-wide">
+              {BRAND.nameEn}
+            </span>
+            <span className="text-[0.68rem] text-accent font-medium mt-1">
+              {BRAND.nameAr}
+            </span>
+          </a>
 
-        {/* Desktop nav */}
-        <nav className="hidden lg:flex items-center gap-7">
-          {links.map(([label, href]) => (
-            <a key={href} href={href}
-              className="eyebrow text-[0.68rem] link-lux opacity-90 hover:opacity-100 hover:text-accent transition-all">
-              {label}
+          {/* Desktop nav */}
+          <nav className="hidden lg:flex items-center gap-7">
+            {links.map(([label, href]) => (
+              <a key={href} href={href}
+                className="eyebrow text-[0.78rem] link-lux opacity-90 hover:opacity-100 hover:text-accent transition-all">
+                {label}
+              </a>
+            ))}
+          </nav>
+
+          {/* Desktop CTA */}
+          <div className="hidden lg:flex items-center gap-3">
+            <a href={CONTACT.whatsapp} target="_blank" rel="noopener noreferrer"
+              aria-label="تواصل واتساب"
+              className="inline-flex items-center gap-1.5 text-xs text-emerald-400 hover:text-emerald-300 font-medium px-3 py-2 border border-emerald-400/40 rounded transition-colors">
+              <FaWhatsapp className="w-4 h-4" />
+              <span>واتساب سريع</span>
             </a>
-          ))}
-        </nav>
+            <a href="#book"
+              className="inline-flex btn-primary text-sm !py-2.5 !px-5">
+              <FiCalendar className="w-3.5 h-3.5" />
+              احجزي موعدكِ
+            </a>
+          </div>
 
-        {/* Desktop CTA */}
-        <a href={FRESHA_URL} target="_blank" rel="noopener noreferrer"
-          className="hidden lg:inline-flex btn-outline text-sm !py-2.5 !px-5 border-current">
-          <FiExternalLink className="w-3.5 h-3.5" />
-          Book on Fresha
-        </a>
+          {/* Mobile menu button */}
+          <button
+            onClick={() => setOpen(!open)}
+            aria-label={open ? "إغلاق القائمة" : "فتح القائمة"}
+            aria-expanded={open}
+            className="lg:hidden p-2 hover:text-accent transition-colors">
+            {open ? <FiX className="w-6 h-6" /> : <FiMenu className="w-6 h-6" />}
+          </button>
+        </div>
+      </header>
 
-        {/* Mobile menu button */}
-        <button
-          onClick={() => setOpen(!open)}
-          aria-label={open ? "Close menu" : "Open menu"}
-          aria-expanded={open}
-          className="lg:hidden p-2 hover:text-accent transition-colors">
-          {open ? <FiX className="w-5 h-5" /> : <FiMenu className="w-5 h-5" />}
-        </button>
-      </div>
-    </header>
-
-      {/* Mobile drawer — z-[60] so it fully covers the header bar */}
+      {/* Mobile drawer */}
       <div
         className="lg:hidden"
         style={{
@@ -357,22 +343,25 @@ function Header() {
         }}
         aria-hidden={!open}
       >
-        {/* Drawer top bar — logo + close */}
+        {/* Drawer top bar */}
         <div style={{
           display: "flex", alignItems: "center", justifyContent: "space-between",
           padding: "1rem 1.25rem", borderBottom: "1px solid #e5ddd4", flexShrink: 0,
         }}>
           <div>
-            <div style={{ fontFamily: "Cormorant Garamond, Georgia, serif", fontSize: "1.1rem", letterSpacing: "0.2em", color: "#1a1410" }}>
-              Red ruj Salon
+            <div style={{ fontFamily: "Cairo, Georgia, serif", fontSize: "1.2rem", fontWeight: "700", color: "#1a1410" }}>
+              {BRAND.nameEn}
+            </div>
+            <div style={{ fontSize: "0.75rem", color: "#b8914a", fontWeight: "500" }}>
+              {BRAND.nameAr}
             </div>
           </div>
           <button
             onClick={() => setOpen(false)}
-            aria-label="Close menu"
+            aria-label="إغلاق القائمة"
             style={{ padding: "0.5rem", color: "#1a1410", background: "none", border: "none", cursor: "pointer" }}
           >
-            <FiX style={{ width: "1.5rem", height: "1.5rem" }} />
+            <FiX style={{ width: "1.6rem", height: "1.6rem" }} />
           </button>
         </div>
 
@@ -385,9 +374,10 @@ function Header() {
               onClick={() => setOpen(false)}
               style={{
                 display: "flex", alignItems: "center", justifyContent: "space-between",
-                padding: "1rem 0",
-                fontFamily: "Cormorant Garamond, Georgia, serif",
-                fontSize: "clamp(1.75rem, 5vw, 2.25rem)",
+                padding: "1.1rem 0",
+                fontFamily: "Cairo, sans-serif",
+                fontSize: "1.25rem",
+                fontWeight: "600",
                 color: "#1a1410",
                 textDecoration: "none",
                 borderBottom: "1px solid #e5ddd4",
@@ -395,44 +385,52 @@ function Header() {
               }}
             >
               <span>{label}</span>
-              <FiArrowRight style={{ width: "1.1rem", height: "1.1rem", opacity: 0.35 }} />
+              <FiArrowLeft style={{ width: "1.2rem", height: "1.2rem", opacity: 0.4 }} />
             </a>
           ))}
+
+          {/* Mobile WhatsApp Quick Action */}
           <a
-            href={FRESHA_URL}
+            href={CONTACT.whatsapp}
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => setOpen(false)}
             style={{
               display: "flex", alignItems: "center", justifyContent: "space-between",
-              padding: "1rem 0",
-              fontFamily: "Cormorant Garamond, Georgia, serif",
-              fontSize: "clamp(1.75rem, 5vw, 2.25rem)",
-              color: "#b8914a",
+              padding: "1.1rem 0",
+              fontFamily: "Cairo, sans-serif",
+              fontSize: "1.2rem",
+              fontWeight: "600",
+              color: "#128C7E",
               textDecoration: "none",
               borderBottom: "1px solid #e5ddd4",
             }}
           >
-            <span>Book on Fresha</span>
-            <FiExternalLink style={{ width: "1.1rem", height: "1.1rem" }} />
+            <span style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+              <FaWhatsapp style={{ width: "1.3rem", height: "1.3rem" }} />
+              تواصل سريع عبر واتساب
+            </span>
+            <FiArrowLeft style={{ width: "1.2rem", height: "1.2rem", opacity: 0.6 }} />
           </a>
         </nav>
 
         {/* Bottom contact info */}
-        <div style={{ padding: "1.25rem", borderTop: "1px solid #e5ddd4", display: "flex", flexDirection: "column", gap: "0.6rem" }}>
+        <div style={{ padding: "1.25rem", borderTop: "1px solid #e5ddd4", display: "flex", flexDirection: "column", gap: "0.8rem" }}>
           <a
             href={`tel:${CONTACT.phone}`}
-            style={{ display: "flex", alignItems: "center", gap: "0.5rem", fontSize: "0.875rem", color: "#6b5c4e", textDecoration: "none" }}
+            style={{ display: "flex", alignItems: "center", gap: "0.5rem", fontSize: "0.95rem", color: "#6b5c4e", textDecoration: "none", direction: "ltr", justifyContent: "flex-end" }}
           >
+            <span>{CONTACT.phone}</span>
             <FiPhone style={{ width: "1rem", height: "1rem", flexShrink: 0 }} />
-            {CONTACT.phone}
           </a>
           <a
-            href={`mailto:${CONTACT.email}`}
-            style={{ display: "flex", alignItems: "center", gap: "0.5rem", fontSize: "0.875rem", color: "#6b5c4e", textDecoration: "none" }}
+            href={CONTACT.instagram}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ display: "flex", alignItems: "center", gap: "0.5rem", fontSize: "0.9rem", color: "#b8914a", textDecoration: "none" }}
           >
-            <FiMail style={{ width: "1rem", height: "1rem", flexShrink: 0 }} />
-            {CONTACT.email}
+            <FiInstagram style={{ width: "1.1rem", height: "1.1rem", flexShrink: 0 }} />
+            حساب إنستغرام: @red_ruj_salon
           </a>
         </div>
       </div>
@@ -441,7 +439,7 @@ function Header() {
 }
 
 /* ══════════════════════════════════════════════════════════════
-   HERO — separate mobile/desktop background
+   HERO
 ══════════════════════════════════════════════════════════════ */
 
 function Hero() {
@@ -451,7 +449,7 @@ function Hero() {
 
       {/* Desktop background (landscape) — hidden on mobile */}
       <div className="absolute inset-0 hidden sm:block">
-        <img src={heroDesktop} alt=""
+        <img src={heroDesktop} alt="صالون ريد روج - الرياض"
           className="h-full w-full object-cover object-center scale-[1.04]"
           style={{ animation: "heroZoom 12s ease-in-out infinite alternate" }}
           loading="eager" aria-hidden />
@@ -459,15 +457,15 @@ function Hero() {
 
       {/* Mobile background (portrait) — shown only on mobile */}
       <div className="absolute inset-0 block sm:hidden">
-        <img src={heroMobile} alt=""
+        <img src={heroMobile} alt="صالون ريد روج النسائي"
           className="h-full w-full object-cover object-top"
           loading="eager" aria-hidden />
       </div>
 
-      {/* Gradient overlay — stronger on mobile for legibility */}
+      {/* Gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-b
-        from-black/70 via-black/40 to-black/90
-        sm:from-black/55 sm:via-black/25 sm:to-black/82" />
+        from-black/75 via-black/45 to-black/90
+        sm:from-black/60 sm:via-black/30 sm:to-black/85" />
 
       {/* Top spacer for nav */}
       <div className="relative z-10 pt-20 sm:pt-28" />
@@ -476,21 +474,21 @@ function Hero() {
       <div className="relative z-10 mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-10 pb-10 sm:pb-16 flex-1 flex flex-col justify-end gap-6 sm:gap-8">
 
         {/* Eyebrow */}
-        <p className="fade-in eyebrow text-amber-300 flex items-center gap-2 sm:gap-3"
+        <p className="fade-in eyebrow text-amber-300 flex items-center gap-2 sm:gap-3 text-xs sm:text-sm font-semibold"
           style={{ animationDelay: ".2s" }}>
           <span className="h-px w-6 sm:w-10 bg-amber-300/60 shrink-0" />
-          The Art of Feeling Beautiful
+          {BRAND.nameAr} | {BRAND.tagline}
         </p>
 
         {/* Headline */}
-        <h1 className="text-[clamp(2.6rem,9vw,9rem)] leading-[0.93] tracking-[-0.02em] max-w-4xl">
+        <h1 className="text-[clamp(2.4rem,7.5vw,6.5rem)] font-bold leading-[1.1] tracking-[-0.01em] max-w-4xl">
           <span className="line">
-            <span style={{ animationDelay: ".3s" }}>Beauty,</span>
+            <span style={{ animationDelay: ".3s" }}>جمالكِ،</span>
           </span>
           <span className="line">
             <span style={{ animationDelay: ".48s" }}>
-              Elevated{" "}
-              <em className="text-amber-300 not-italic italic">to an Art.</em>
+              يرتقي{" "}
+              <em className="text-amber-300 not-italic font-bold">إلى مستوى الفن.</em>
             </span>
           </span>
         </h1>
@@ -498,39 +496,39 @@ function Hero() {
         {/* Sub-text + CTAs */}
         <div className="fade-in flex flex-col gap-5 sm:gap-6 sm:flex-row sm:items-end sm:justify-between"
           style={{ animationDelay: ".85s" }}>
-          <p className="text-[1rem] sm:text-[1.1rem] leading-relaxed text-white/80 max-w-[460px]">
-            A private spa for hair, skin and artistry in Riyadh — where every
-            ritual is unhurried and every detail is considered.
+          <p className="text-[1rem] sm:text-[1.125rem] leading-relaxed text-white/85 max-w-[500px]">
+            صالون نسائي فاخر للشعر، البشرة، الأظافر والمكياج في الرياض — حيث تلتقي العناية
+            الفائقة بأعلى درجات الخصوصية والهدوء الراقي في أجنحة مخصصة لكل عميلة.
           </p>
 
           <div className="flex flex-col xs:flex-row gap-3 w-full sm:w-auto shrink-0">
-            <a href={FRESHA_URL} target="_blank" rel="noopener noreferrer"
-              className="btn-white !py-3.5 !px-6 sm:!px-7 text-[0.72rem] flex items-center justify-center gap-2 w-full sm:w-auto">
-              <FiExternalLink className="w-3.5 h-3.5 shrink-0" />
-              Book on Fresha
-            </a>
             <a href="#book"
-              className="btn-outline border-white/50 text-white !py-3.5 !px-6 text-[0.72rem] flex items-center justify-center gap-2 w-full sm:w-auto">
-              <FiCalendar className="w-3.5 h-3.5 shrink-0" />
-              Enquire Now
+              className="btn-white !py-3.5 !px-6 sm:!px-7 text-[0.82rem] flex items-center justify-center gap-2 w-full sm:w-auto font-semibold">
+              <FiCalendar className="w-4 h-4 shrink-0" />
+              احجزي موعدكِ الآن
+            </a>
+            <a href={CONTACT.whatsapp} target="_blank" rel="noopener noreferrer"
+              className="btn-outline border-emerald-400 text-emerald-300 hover:!bg-emerald-600 hover:!border-emerald-600 hover:!text-white !py-3.5 !px-6 text-[0.82rem] flex items-center justify-center gap-2 w-full sm:w-auto">
+              <FaWhatsapp className="w-4 h-4 shrink-0 text-emerald-400" />
+              استفسار عبر واتساب
             </a>
             <a href="#services"
-              className="hidden sm:inline-flex btn-outline border-white/30 text-white/80 !py-3.5 !px-5 text-[0.72rem] items-center justify-center gap-2">
-              Explore Services
-              <FiArrowRight className="w-3.5 h-3.5 shrink-0" />
+              className="hidden sm:inline-flex btn-outline border-white/30 text-white/85 !py-3.5 !px-5 text-[0.82rem] items-center justify-center gap-2">
+              استكشفي الخدمات
+              <FiArrowLeft className="w-3.5 h-3.5 shrink-0" />
             </a>
           </div>
         </div>
 
-        {/* Trust badges */}
-        <div className="fade-in flex flex-wrap items-center gap-3 sm:gap-4 pt-2 border-t border-white/15"
+        {/* Trust features */}
+        <div className="fade-in flex flex-wrap items-center gap-4 sm:gap-6 pt-3 border-t border-white/15"
           style={{ animationDelay: "1.1s" }}>
           {[
-            { icon: <FiStar className="w-3.5 h-3.5 text-amber-300" />, text: "4.9 Excellence Rating" },
-            { icon: <FiClock className="w-3.5 h-3.5 text-amber-300" />, text: "Unhurried · Private Suites" },
-            { icon: <FiUser className="w-3.5 h-3.5 text-amber-300" />, text: "1-on-1 Dedicated Artist" },
+            { icon: <FiShield className="w-4 h-4 text-amber-300" />, text: "أجنحة خاصة بخصوصية تامة" },
+            { icon: <FiClock className="w-4 h-4 text-amber-300" />, text: "مواعيد مريحة بلا استعجال" },
+            { icon: <FiHeart className="w-4 h-4 text-amber-300" />, text: "عناية مخصصة بكل تفاصيلكِ" },
           ].map(({ icon, text }) => (
-            <div key={text} className="flex items-center gap-1.5 text-white/70 text-xs sm:text-sm">
+            <div key={text} className="flex items-center gap-2 text-white/80 text-xs sm:text-sm font-medium">
               {icon}
               <span>{text}</span>
             </div>
@@ -538,10 +536,10 @@ function Hero() {
         </div>
       </div>
 
-      {/* Scroll indicator — hidden on mobile */}
-      <a href="#services" aria-label="Scroll down"
+      {/* Scroll indicator */}
+      <a href="#services" aria-label="التمرير للأسفل"
         className="relative z-10 mx-auto mb-6 hidden sm:flex flex-col items-center gap-2 text-white/60 hover:text-white transition-colors">
-        <span className="eyebrow text-[0.6rem]">Scroll</span>
+        <span className="eyebrow text-[0.65rem]">اكتشفي المزيد</span>
         <span className="relative h-10 w-px overflow-hidden bg-white/25">
           <span className="scroll-dot absolute inset-x-0 h-1/2 bg-amber-300" />
         </span>
@@ -562,9 +560,9 @@ function Hero() {
 ══════════════════════════════════════════════════════════════ */
 
 function Services() {
-  const [activeTab, setActiveTab] = useState("All");
-  const tabs = ["All", "Hair", "Colour", "Bridal", "Skin", "Nails", "Makeup"];
-  const visible = activeTab === "All"
+  const [activeTab, setActiveTab] = useState("الكل");
+  const tabs = ["الكل", "الشعر", "الصبغات", "العرائس", "البشرة", "الأظافر", "المكياج"];
+  const visible = activeTab === "الكل"
     ? SERVICES
     : SERVICES.filter(s => s.category === activeTab);
 
@@ -576,31 +574,31 @@ function Services() {
         <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between mb-10 sm:mb-14 pb-8 sm:pb-10 border-b border-white/12">
           <div>
             <Reveal>
-              <p className="eyebrow text-amber-300 flex items-center gap-2 mb-3">
+              <p className="eyebrow text-amber-300 flex items-center gap-2 mb-3 text-xs sm:text-sm font-medium">
                 <span className="h-px w-6 bg-amber-300/60" />
-                Services & Pricing
+                الخدمات وقائمة الأسعار
               </p>
             </Reveal>
             <Reveal delay={80}>
-              <h2 className="text-[clamp(2.2rem,5.5vw,5rem)] leading-none">
-                The Atelier Menu
+              <h2 className="text-[clamp(2.2rem,5vw,4.5rem)] font-bold leading-none">
+                خدمات {BRAND.nameAr}
               </h2>
             </Reveal>
           </div>
           <Reveal delay={140}>
-            <p className="text-white/65 text-[0.9375rem] sm:text-base max-w-xs leading-relaxed">
-              Every service includes a private consultation. No templates, no rush.
+            <p className="text-white/70 text-[0.95rem] sm:text-base max-w-sm leading-relaxed">
+              كل خدمة تبدأ باستشارة شخصية مجانية لتحديد ما يلائم شعركِ وبشرتكِ بكل دقة واهتمام.
             </p>
           </Reveal>
         </div>
 
-        {/* Category tabs — scrollable on mobile */}
+        {/* Category tabs */}
         <Reveal delay={60}>
           <div className="flex gap-2 overflow-x-auto no-scrollbar pb-3 -mx-4 px-4 sm:mx-0 sm:px-0 sm:flex-wrap mb-8 sm:mb-10">
             {tabs.map(tab => (
               <button key={tab} onClick={() => setActiveTab(tab)}
-                className={`pill shrink-0 !border-white/20 !text-white/60 hover:!text-white hover:!bg-white/10 hover:!border-white/40 ${
-                  activeTab === tab ? "!bg-amber-300/90 !text-neutral-900 !border-amber-300 font-semibold" : ""
+                className={`pill shrink-0 !border-white/20 !text-white/70 hover:!text-white hover:!bg-white/10 hover:!border-white/40 text-xs sm:text-sm ${
+                  activeTab === tab ? "!bg-amber-300/95 !text-neutral-900 !border-amber-300 font-bold" : ""
                 }`}>
                 {tab}
               </button>
@@ -609,42 +607,46 @@ function Services() {
         </Reveal>
 
         {/* Service cards grid */}
-        <div className="grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-4 sm:gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {visible.map((svc, i) => (
             <Reveal key={svc.id} delay={i * 60}>
-              <div className="group relative overflow-hidden border border-white/10 bg-white/[0.03] hover:bg-white/[0.07] hover:border-amber-300/40 transition-all duration-400">
-                {/* Image */}
-                <div className="aspect-[3/2] overflow-hidden">
-                  <Img src={svc.img} fallback={svc.fallback} alt={svc.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]" />
-                </div>
-
-                {/* Content */}
-                <div className="p-5 sm:p-6">
-                  <div className="flex items-start justify-between gap-3 mb-3">
-                    <div className="flex items-center gap-2.5">
-                      <div className="text-amber-300 shrink-0">{svc.icon}</div>
-                      <div>
-                        <h3 className="font-serif text-lg sm:text-xl leading-tight text-white">{svc.title}</h3>
-                        <p className="eyebrow text-[0.6rem] text-amber-300/70 mt-0.5">{svc.subtitle}</p>
-                      </div>
-                    </div>
-                    {/* Price badge */}
-                    <div className="shrink-0 text-right">
-                      <div className="font-serif text-lg text-amber-300 leading-tight">{svc.price}</div>
-                      <div className="flex items-center gap-1 text-[0.7rem] text-white/45 mt-0.5 justify-end">
-                        <FiClock className="w-3 h-3" />
-                        {svc.duration}
-                      </div>
-                    </div>
+              <div className="group relative overflow-hidden border border-white/10 bg-white/[0.03] hover:bg-white/[0.07] hover:border-amber-300/40 transition-all duration-400 h-full flex flex-col justify-between">
+                <div>
+                  {/* Image */}
+                  <div className="aspect-[3/2] overflow-hidden">
+                    <Img src={svc.img} fallback={svc.fallback} alt={svc.title}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]" />
                   </div>
 
-                  <p className="text-sm text-white/65 leading-relaxed mb-4">{svc.desc}</p>
+                  {/* Content */}
+                  <div className="p-5 sm:p-6">
+                    <div className="flex items-start justify-between gap-3 mb-3">
+                      <div className="flex items-center gap-2.5">
+                        <div className="text-amber-300 shrink-0">{svc.icon}</div>
+                        <div>
+                          <h3 className="font-serif text-lg sm:text-xl font-bold leading-tight text-white">{svc.title}</h3>
+                          <p className="text-xs text-amber-300/80 font-medium mt-0.5">{svc.subtitle}</p>
+                        </div>
+                      </div>
+                      {/* Price badge */}
+                      <div className="shrink-0 text-left">
+                        <div className="font-serif text-base sm:text-lg font-bold text-amber-300 leading-tight">{svc.price}</div>
+                        <div className="flex items-center gap-1 text-[0.72rem] text-white/50 mt-0.5 justify-end">
+                          <FiClock className="w-3 h-3" />
+                          <span>{svc.duration}</span>
+                        </div>
+                      </div>
+                    </div>
 
-                  <a href={FRESHA_URL} target="_blank" rel="noopener noreferrer"
-                    className="flex items-center gap-2 eyebrow text-[0.66rem] text-amber-300 hover:gap-3 transition-all duration-200">
-                    <span>Book on Fresha</span>
-                    <FiExternalLink className="w-3.5 h-3.5 shrink-0" />
+                    <p className="text-sm text-white/70 leading-relaxed mb-4">{svc.desc}</p>
+                  </div>
+                </div>
+
+                <div className="px-5 pb-5 sm:px-6 sm:pb-6 pt-0">
+                  <a href="#book"
+                    className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-amber-300 hover:gap-3 transition-all duration-200">
+                    <span>طلب حجز الخدمة</span>
+                    <FiArrowLeft className="w-3.5 h-3.5 shrink-0" />
                   </a>
                 </div>
               </div>
@@ -653,25 +655,25 @@ function Services() {
         </div>
 
         {/* Signature experience banner */}
-        <Reveal delay={100} className="mt-8 sm:mt-10">
+        <Reveal delay={100} className="mt-8 sm:mt-12">
           <div className="relative overflow-hidden border border-amber-300/30 bg-amber-300/5 p-6 sm:p-8 lg:p-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
             <div className="flex-1">
-              <p className="eyebrow text-amber-300 text-[0.66rem] mb-2 flex items-center gap-2">
+              <p className="eyebrow text-amber-300 text-xs mb-2 flex items-center gap-2 font-semibold">
                 <span className="h-px w-5 bg-amber-300/60" />
-                The Signature Experience
+                الباقة الملكية الخاصة
               </p>
-              <h3 className="font-serif text-2xl sm:text-3xl text-white mb-2">
-                Three Hours. <em className="text-amber-300 not-italic italic">No Clocks.</em>
+              <h3 className="font-serif text-2xl sm:text-3xl font-bold text-white mb-2">
+                ثلاث ساعات من الدلال. <em className="text-amber-300 not-italic font-bold">خصوصية واسترخاء تام.</em>
               </h3>
-              <p className="text-white/65 text-sm sm:text-base max-w-lg">
-                Champagne on arrival, scalp ritual, bespoke colour, and a botanical facial — all in
-                your private suite. Price by consultation.
+              <p className="text-white/75 text-sm sm:text-base max-w-xl leading-relaxed">
+                ضيافة سعودية فاخرة، جلسة عناية متكاملة بالشعر وفروة الرأس، لون مخصص، وعناية فائقة بنضارة البشرة
+                داخل جناحكِ الخاص. متوفرة بالحجز المسبق.
               </p>
             </div>
-            <a href={FRESHA_URL} target="_blank" rel="noopener noreferrer"
-              className="btn-white shrink-0 !py-3.5 !px-6 text-[0.72rem] flex items-center gap-2">
-              <FiExternalLink className="w-3.5 h-3.5 shrink-0" />
-              Book on Fresha
+            <a href="#book"
+              className="btn-white shrink-0 !py-3.5 !px-6 text-xs sm:text-sm font-bold flex items-center gap-2">
+              <FiCalendar className="w-4 h-4 shrink-0" />
+              احجزي الباقة الملكية
             </a>
           </div>
         </Reveal>
@@ -685,9 +687,9 @@ function Services() {
 ══════════════════════════════════════════════════════════════ */
 
 function Gallery() {
-  const [activeCat, setActiveCat] = useState("All");
+  const [activeCat, setActiveCat] = useState("الكل");
   const [lb, setLb]               = useState<typeof GALLERY_ITEMS[0] | null>(null);
-  const filtered = activeCat === "All" ? GALLERY_ITEMS : GALLERY_ITEMS.filter(g => g.cat === activeCat);
+  const filtered = activeCat === "الكل" ? GALLERY_ITEMS : GALLERY_ITEMS.filter(g => g.cat === activeCat);
 
   useEffect(() => {
     const fn = (e: KeyboardEvent) => { if (e.key === "Escape") setLb(null); };
@@ -708,21 +710,22 @@ function Gallery() {
         <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-5 mb-8 sm:mb-10 pb-8 border-b border-border">
           <div>
             <Reveal>
-              <p className="eyebrow text-accent flex items-center gap-2 mb-3">
+              <p className="eyebrow text-accent flex items-center gap-2 mb-3 text-xs sm:text-sm font-semibold">
                 <span className="h-px w-6 bg-accent/60" />
-                Transformations
+                إبداعات وتألق
               </p>
             </Reveal>
             <Reveal delay={80}>
-              <h2 className="text-[clamp(2.2rem,5vw,5rem)] leading-none text-foreground">
-                Our Portfolio
+              <h2 className="text-[clamp(2.2rem,5vw,4.5rem)] font-bold leading-none text-foreground">
+                معرض أعمالنا
               </h2>
             </Reveal>
           </div>
           <Reveal delay={140}>
-            <a href={CONTACT.instagram} className="eyebrow link-lux text-muted-foreground flex items-center gap-2 text-[0.68rem]">
-              <FiInstagram className="w-4 h-4" />
-              Follow on Instagram
+            <a href={CONTACT.instagram} target="_blank" rel="noopener noreferrer"
+              className="eyebrow link-lux text-muted-foreground hover:text-accent flex items-center gap-2 text-xs sm:text-sm font-semibold">
+              <FiInstagram className="w-4 h-4 text-accent" />
+              تابعي حسابنا على إنستغرام (@red_ruj_salon)
             </a>
           </Reveal>
         </div>
@@ -732,14 +735,14 @@ function Gallery() {
           <div className="flex gap-2 overflow-x-auto no-scrollbar pb-3 -mx-4 px-4 sm:mx-0 sm:px-0 sm:flex-wrap mb-8">
             {GALLERY_CATS.map(cat => (
               <button key={cat} onClick={() => setActiveCat(cat)}
-                className={`pill shrink-0 ${activeCat === cat ? "active" : ""}`}>
+                className={`pill shrink-0 text-xs sm:text-sm ${activeCat === cat ? "active font-bold" : ""}`}>
                 {cat}
               </button>
             ))}
           </div>
         </Reveal>
 
-        {/* Masonry-style grid */}
+        {/* Grid */}
         <div className="grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-12">
           {filtered.map((item, i) => (
             <Reveal key={item.id} mask delay={Math.min(i * 70, 420)}
@@ -747,15 +750,15 @@ function Gallery() {
               <div className="gallery-item w-full h-full"
                 onClick={() => setLb(item)} role="button" tabIndex={0}
                 onKeyDown={e => { if (e.key === "Enter") setLb(item); }}
-                aria-label={`View ${item.title}`}>
+                aria-label={`عرض ${item.title}`}>
                 <Img src={item.src} fallback={item.fallback} alt={item.alt}
                   className="w-full h-full object-cover" />
                 <div className="gallery-overlay" />
                 <div className="absolute inset-x-0 bottom-0 z-10 p-4 sm:p-5 opacity-0 [.gallery-item:hover_&]:opacity-100 transition-opacity duration-400">
-                  <p className="eyebrow text-amber-300 text-[0.6rem] mb-1">{item.cat}</p>
-                  <p className="font-serif text-lg sm:text-xl text-white italic">{item.title}</p>
-                  <p className="eyebrow text-amber-300/80 text-[0.6rem] mt-2 flex items-center gap-1">
-                    Book This Look <FiArrowRight className="w-3 h-3" />
+                  <p className="eyebrow text-amber-300 text-xs mb-1 font-medium">{item.cat}</p>
+                  <p className="font-serif text-lg sm:text-xl text-white font-bold">{item.title}</p>
+                  <p className="eyebrow text-amber-300/90 text-xs mt-2 flex items-center gap-1 font-semibold">
+                    احجزي هذه الإطلالة <FiArrowLeft className="w-3 h-3" />
                   </p>
                 </div>
               </div>
@@ -767,22 +770,22 @@ function Gallery() {
       {/* Lightbox */}
       {lb && (
         <div className="lb-backdrop" onClick={() => setLb(null)} role="dialog" aria-modal aria-label={lb.alt}>
-          <button onClick={() => setLb(null)} aria-label="Close"
-            className="absolute top-4 right-4 sm:top-5 sm:right-5 z-10 text-white/70 hover:text-white p-2 border border-white/20 hover:border-white transition-colors">
-            <FiX className="w-5 h-5" />
+          <button onClick={() => setLb(null)} aria-label="إغلاق"
+            className="absolute top-4 left-4 sm:top-5 sm:left-5 z-10 text-white/70 hover:text-white p-2 border border-white/20 hover:border-white transition-colors">
+            <FiX className="w-6 h-6" />
           </button>
           <figure className="flex flex-col items-center gap-4 max-w-4xl w-full"
             onClick={e => e.stopPropagation()}>
             <img src={lb.src} alt={lb.alt}
-              className="max-h-[75vh] max-w-full object-contain"
+              className="max-h-[75vh] max-w-full object-contain rounded-sm"
               onError={e => { if (lb.fallback) (e.currentTarget as HTMLImageElement).src = lb.fallback; }} />
             <figcaption className="text-center">
-              <p className="eyebrow text-amber-300 text-[0.65rem] mb-1">{lb.cat}</p>
-              <p className="font-serif text-xl text-white italic">{lb.title}</p>
-              <a href={FRESHA_URL} target="_blank" rel="noopener noreferrer" onClick={() => setLb(null)}
-                className="mt-3 inline-flex items-center gap-2 btn-white !py-2.5 !px-5 text-[0.68rem]">
-                <FiExternalLink className="w-3.5 h-3.5" />
-                Book on Fresha
+              <p className="eyebrow text-amber-300 text-xs mb-1">{lb.cat}</p>
+              <p className="font-serif text-2xl text-white font-bold">{lb.title}</p>
+              <a href="#book" onClick={() => setLb(null)}
+                className="mt-3 inline-flex items-center gap-2 btn-white !py-2.5 !px-6 text-xs font-bold">
+                <FiCalendar className="w-4 h-4" />
+                احجزي هذا الموعد
               </a>
             </figcaption>
           </figure>
@@ -793,7 +796,7 @@ function Gallery() {
 }
 
 /* ══════════════════════════════════════════════════════════════
-   STORY
+   STORY & ABOUT
 ══════════════════════════════════════════════════════════════ */
 
 function Story() {
@@ -805,36 +808,43 @@ function Story() {
           {/* Text */}
           <div>
             <Reveal>
-              <p className="eyebrow text-accent flex items-center gap-2 mb-4">
+              <p className="eyebrow text-accent flex items-center gap-2 mb-4 text-xs sm:text-sm font-semibold">
                 <span className="h-px w-6 bg-accent/60" />
-                Our Story — Est. 2014
+                عن {BRAND.nameAr}
               </p>
             </Reveal>
             <Reveal delay={80}>
-              <h2 className="text-[clamp(2.2rem,4.5vw,4.5rem)] leading-[1.04] mb-6 sm:mb-8">
-                A house devoted to the{" "}
-                <em className="text-accent not-italic italic">quiet</em> luxury of care.
+              <h2 className="text-[clamp(2.2rem,4.5vw,4.2rem)] font-bold leading-[1.1] mb-6 sm:mb-8">
+                صالونٌ مخصصٌ لـ{" "}
+                <em className="text-accent not-italic font-bold">الفخامة الهادئة</em> والجمال الراقي.
               </h2>
             </Reveal>
             <Reveal delay={160}>
               <div className="space-y-4 text-muted-foreground text-base sm:text-[1.0625rem] leading-relaxed">
-                <p>Nourish Spa began with a single chair and an uncompromising belief: beauty is not something applied, but something revealed through patient, masterful craft.</p>
-                <p>Today our spa brings together master colourists, skin scientists and editorial artists who allocate double the standard appointment time — so you never feel hurried.</p>
+                <p>
+                  انطلق {BRAND.nameAr} ({BRAND.nameEn}) في الرياض ليكون الوجهة المفضلة لكل سيدة تبحث عن
+                  التميز والخصوصية التامة في تجربة الجمال والعناية.
+                </p>
+                <p>
+                  نؤمن في صالوننا بأن الجمال ليس مجرد خدمة تقدم، بل هو رحلة استرخاء متكاملة. لذا خصصنا
+                  أجنحة خاصة مستقلة ومواعيد مدروسة تمنحكِ كامل الوقت والاهتمام بلا أي استعجال، وباستخدام
+                  أجود الماركات العالمية المعتمدة.
+                </p>
               </div>
             </Reveal>
             <Reveal delay={240}>
-              <a href="#philosophy" className="eyebrow link-lux mt-8 inline-flex items-center gap-2 text-foreground text-[0.72rem]">
-                Our Philosophy
-                <FiArrowRight className="w-3.5 h-3.5" />
+              <a href="#philosophy" className="eyebrow link-lux mt-8 inline-flex items-center gap-2 text-foreground text-xs sm:text-sm font-bold">
+                فلسفتنا في العناية
+                <FiArrowLeft className="w-3.5 h-3.5" />
               </a>
             </Reveal>
 
             {/* Stats row */}
             <Reveal delay={300} className="mt-10 grid grid-cols-3 gap-4 sm:gap-6 border-t border-border pt-8">
-              {[["12+", "Years"], ["3,400+", "Clients"], ["7", "Disciplines"]].map(([n, l]) => (
+              {[["١٠+", "سنوات خبرة"], ["٥,٠٠٠+", "عميلة سعيدة"], ["٧", "أقسام تخصصية"]].map(([n, l]) => (
                 <div key={l} className="text-center">
-                  <div className="font-serif text-[2.2rem] sm:text-[2.8rem] leading-none text-accent">{n}</div>
-                  <p className="eyebrow text-[0.62rem] text-muted-foreground mt-1">{l}</p>
+                  <div className="font-serif text-[2.2rem] sm:text-[2.8rem] font-bold leading-none text-accent">{n}</div>
+                  <p className="eyebrow text-xs text-muted-foreground mt-1 font-medium">{l}</p>
                 </div>
               ))}
             </Reveal>
@@ -842,24 +852,24 @@ function Story() {
 
           {/* Image stack */}
           <div className="relative mt-4 lg:mt-0">
-            <Reveal mask className="aspect-[4/5] overflow-hidden shadow-xl">
-              <img src={hair} alt="Stylist shaping hair in the atelier"
+            <Reveal mask className="aspect-[4/5] overflow-hidden shadow-xl rounded-sm">
+              <img src={hair} alt="العناية بالشعر في صالون ريد روج"
                 className="w-full h-full object-cover" loading="lazy" />
             </Reveal>
             {/* Floating card */}
             <Reveal delay={300}
-              className="absolute -bottom-6 -left-4 sm:-left-8 z-10 w-[65%] sm:w-[55%] bg-card border border-border shadow-xl p-4 sm:p-5">
+              className="absolute -bottom-6 -right-4 sm:-right-8 z-10 w-[70%] sm:w-[60%] bg-card border border-border shadow-xl p-4 sm:p-5 rounded-sm">
               <div className="flex items-center gap-3 mb-2">
-                <div className="h-9 w-9 sm:h-11 sm:w-11 overflow-hidden shrink-0">
-                  <img src={salon} alt="Salon interior" className="w-full h-full object-cover" loading="lazy" />
+                <div className="h-10 w-10 sm:h-12 sm:w-12 overflow-hidden shrink-0 rounded-sm">
+                  <img src={salon} alt="صالون ريد روج الرياض" className="w-full h-full object-cover" loading="lazy" />
                 </div>
                 <div>
-                  <p className="font-serif text-sm sm:text-base leading-tight text-foreground">Private Acoustic Suite</p>
-                  <p className="eyebrow text-[0.58rem] text-accent mt-0.5">Zero background noise</p>
+                  <p className="font-serif text-sm sm:text-base font-bold leading-tight text-foreground">أجنحة خاصة ومستقلة</p>
+                  <p className="eyebrow text-[0.65rem] text-accent mt-0.5 font-semibold">أعلى درجات الخصوصية</p>
                 </div>
               </div>
               <p className="text-xs text-muted-foreground leading-snug">
-                Dedicated single-chair service. Your session, your soundtrack.
+                استمتعي بجلسة العناية الخاصة بكِ في جو هادئ ومريح تماماً لكِ وحدكِ.
               </p>
             </Reveal>
           </div>
@@ -870,22 +880,22 @@ function Story() {
       <div id="philosophy" className="bg-secondary border-t border-b border-border">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10 py-14 sm:py-20">
           <Reveal className="mb-10 sm:mb-14 text-center">
-            <p className="font-serif text-[clamp(1.35rem,3vw,2.6rem)] leading-snug max-w-3xl mx-auto">
-              "Self-care is not indulgence, but a{" "}
-              <em className="text-accent not-italic italic">ritual of respect</em> — for your time,
-              your skin, and the person you are becoming."
+            <p className="font-serif text-[clamp(1.35rem,2.8vw,2.4rem)] font-bold leading-snug max-w-3xl mx-auto">
+              "العناية بالجمال ليست رفاهية، بل هي{" "}
+              <em className="text-accent not-italic font-bold">طقسٌ من الاحترام والتقدير</em> — لوقتكِ،
+              لراحتكِ، ولتألقكِ الدائم."
             </p>
           </Reveal>
           <div className="grid gap-6 sm:gap-8 sm:grid-cols-3">
             {[
-              { icon: <PiFlowerLotusThin className="w-7 h-7 text-accent" />, title: "Considered", desc: "Every service begins with listening. Your vision shapes every decision." },
-              { icon: <PiHandHeartThin className="w-7 h-7 text-accent" />,   title: "Conscious",  desc: "Clean, high-performance formulas chosen for efficacy and integrity." },
-              { icon: <PiClockCountdownThin className="w-7 h-7 text-accent" />, title: "Unhurried", desc: "Generous appointment times. Time is the true luxury of modern beauty." },
+              { icon: <PiFlowerLotusThin className="w-8 h-8 text-accent" />, title: "استماع واهتمام", desc: "كل موعد يبدأ باستشارة شخصية لفهم ما ترغبين به بدقة وتحقيقه بأعلى معايير الإتقان." },
+              { icon: <PiHandHeartThin className="w-8 h-8 text-accent" />,   title: "منتجات نقية ومعتمدة", desc: "نستخدم فقط أفضل الماركات العالمية الآمنة المعتمدة التي تحافظ على صحة شعركِ وبشرتكِ." },
+              { icon: <PiClockCountdownThin className="w-8 h-8 text-accent" />, title: "وقتٌ كافٍ بلا استعجال", desc: "نمنح كل عميلة الوقت الكامل للاستمتاع بجلسة هادئة ومتقنة دون أي تداخل في المواعيد." },
             ].map(({ icon, title, desc }, i) => (
               <Reveal key={title} delay={i * 100}
-                className="border-t-2 border-accent/30 pt-5 sm:pt-6">
+                className="border-t-2 border-accent/40 pt-5 sm:pt-6">
                 <div className="mb-3">{icon}</div>
-                <h3 className="font-serif text-xl sm:text-2xl mb-2">{title}</h3>
+                <h3 className="font-serif text-xl sm:text-2xl font-bold mb-2">{title}</h3>
                 <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">{desc}</p>
               </Reveal>
             ))}
@@ -897,145 +907,20 @@ function Story() {
 }
 
 /* ══════════════════════════════════════════════════════════════
-   EXPERTS
-══════════════════════════════════════════════════════════════ */
-
-function Experts() {
-  return (
-    <section id="experts" className="bg-card py-20 sm:py-28 lg:py-36 border-b border-border">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
-        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-5 mb-12 sm:mb-16 pb-8 border-b border-border">
-          <div>
-            <Reveal>
-              <p className="eyebrow text-accent flex items-center gap-2 mb-3">
-                <span className="h-px w-6 bg-accent/60" />
-                Meet the Experts
-              </p>
-            </Reveal>
-            <Reveal delay={80}>
-              <h2 className="text-[clamp(2.2rem,5vw,5rem)] leading-none">The Atelier</h2>
-            </Reveal>
-          </div>
-          <Reveal delay={140}>
-            <p className="text-muted-foreground text-sm sm:text-base max-w-xs">
-              Each artist brings years of specialist training and zero compromise on craft.
-            </p>
-          </Reveal>
-        </div>
-
-        <div className="grid gap-8 sm:gap-10 sm:grid-cols-2 lg:grid-cols-3">
-          {TEAM.map((m, i) => (
-            <Reveal key={m.name} delay={i * 120} className={i === 1 ? "lg:mt-12" : ""}>
-              <div className="group">
-                <div className="aspect-[3/4] overflow-hidden mb-5 sm:mb-6 bg-muted">
-                  <Img src={m.src} fallback={"fallback" in m ? (m as any).fallback : undefined}
-                    alt={`Portrait of ${m.name}`}
-                    className="w-full h-full object-cover grayscale-[25%] transition-all duration-700 group-hover:scale-[1.04] group-hover:grayscale-0" />
-                </div>
-                <div className="border-t border-border pt-5">
-                  <h3 className="font-serif text-xl sm:text-2xl text-foreground">{m.name}</h3>
-                  <p className="eyebrow text-accent text-[0.62rem] mt-1 mb-3">{m.role}</p>
-                  <p className="text-sm text-muted-foreground leading-relaxed mb-4">{m.bio}</p>
-                  <a href={FRESHA_URL} target="_blank" rel="noopener noreferrer"
-                    className="eyebrow link-lux text-[0.65rem] text-muted-foreground flex items-center gap-1.5">
-                    Book with {m.name.split(" ")[0]}
-                    <FiExternalLink className="w-3 h-3" />
-                  </a>
-                </div>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ══════════════════════════════════════════════════════════════
-   TESTIMONIALS
-══════════════════════════════════════════════════════════════ */
-
-function Testimonials() {
-  const [active, setActive] = useState(0);
-  useEffect(() => {
-    const t = setInterval(() => setActive(x => (x + 1) % TESTIMONIALS.length), 7000);
-    return () => clearInterval(t);
-  }, []);
-
-  return (
-    <section className="bg-[oklch(0.15_0.025_45)] text-white py-20 sm:py-28">
-      <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-10">
-        <div className="grid gap-10 lg:grid-cols-12 items-start">
-
-          {/* Left — label + counter */}
-          <div className="lg:col-span-4 flex lg:flex-col gap-6 items-center lg:items-start">
-            <Reveal>
-              <p className="eyebrow text-amber-300 flex items-center gap-2">
-                <FiStar className="w-4 h-4" />
-                Client Words
-              </p>
-            </Reveal>
-            <div className="font-serif text-[5rem] sm:text-[7rem] leading-none text-amber-300/15 select-none">
-              "
-            </div>
-            <div className="flex gap-2">
-              {TESTIMONIALS.map((_, k) => (
-                <button key={k} onClick={() => setActive(k)} aria-label={`Testimonial ${k + 1}`}
-                  className={`h-[2px] transition-all duration-400 ${
-                    k === active ? "w-8 bg-amber-300" : "w-4 bg-white/20"
-                  }`} />
-              ))}
-            </div>
-          </div>
-
-          {/* Right — testimonial */}
-          <div className="lg:col-span-8 relative min-h-[200px] sm:min-h-[180px]" aria-live="polite">
-            {TESTIMONIALS.map((t, k) => (
-              <figure key={k}
-                className={`absolute inset-0 transition-all duration-700 ${
-                  k === active
-                    ? "opacity-100 translate-y-0 pointer-events-auto"
-                    : "opacity-0 translate-y-4 pointer-events-none"
-                }`} aria-hidden={k !== active}>
-                <blockquote className="font-serif text-[clamp(1.25rem,2.8vw,2.2rem)] leading-[1.3] text-white">
-                  "{t.q}"
-                </blockquote>
-                <figcaption className="mt-6 flex items-center gap-3">
-                  <span className="h-px w-8 bg-amber-300" />
-                  <div>
-                    <p className="font-serif text-base sm:text-lg text-white">{t.a}</p>
-                    <p className="eyebrow text-[0.62rem] text-amber-300/60 mt-0.5">{t.s}</p>
-                  </div>
-                </figcaption>
-              </figure>
-            ))}
-          </div>
-        </div>
-
-        {/* Navigation arrows */}
-        <div className="flex justify-end gap-2 mt-14 sm:mt-10">
-          <button onClick={() => setActive(x => (x - 1 + TESTIMONIALS.length) % TESTIMONIALS.length)}
-            aria-label="Previous" className="p-2.5 border border-white/20 text-white/60 hover:border-amber-300 hover:text-amber-300 transition-colors">
-            <FiChevronLeft className="w-4 h-4" />
-          </button>
-          <button onClick={() => setActive(x => (x + 1) % TESTIMONIALS.length)}
-            aria-label="Next" className="p-2.5 border border-white/20 text-white/60 hover:border-amber-300 hover:text-amber-300 transition-colors">
-            <FiChevronRight className="w-4 h-4" />
-          </button>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ══════════════════════════════════════════════════════════════
    BOOKING
 ══════════════════════════════════════════════════════════════ */
 
+interface BookingErrors {
+  name?: string;
+  contact?: string;
+  service?: string;
+  date?: string;
+}
+
 function Booking() {
   const [selected, setSelected] = useState<string[]>([]);
-  const [errors,   setErrors]   = useState<Record<string, string>>({});
-  const [done,     setDone]     = useState<string | null>(null);
+  const [errors,   setErrors]   = useState<BookingErrors>({});
+  const [done,     setDone]     = useState<{ name: string; phone: string; service: string } | null>(null);
 
   const toggle = (name: string) =>
     setSelected(p => p.includes(name) ? p.filter(s => s !== name) : [...p, name]);
@@ -1044,18 +929,29 @@ function Booking() {
     e.preventDefault();
     const fd = new FormData(e.currentTarget);
     const g  = (k: string) => String(fd.get(k) ?? "").trim();
-    const err: Record<string, string> = {};
+    const err: BookingErrors = {};
 
-    if (!g("name"))    err.name    = "Please share your name.";
-    const c = g("contact");
-    if (!c)            err.contact = "Please add an email or phone.";
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(c) && !/^[+\d][\d\s()-]{6,}$/.test(c))
-      err.contact = "Enter a valid email or phone number.";
-    if (!selected.length) err.service = "Please select at least one service.";
-    if (!g("date"))    err.date    = "Please choose a preferred date.";
+    const name = g("name");
+    const contact = g("contact");
+    const date = g("date");
+
+    if (!name) err.name = "يرجى كتابة الاسم الكريم.";
+    if (!contact) {
+      err.contact = "يرجى إدخال رقم الجوال أو البريد الإلكتروني.";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(contact) && !/^[+\d][\d\s()-]{7,}$/.test(contact)) {
+      err.contact = "يرجى إدخال رقم جوال صحيح (مثال: 0500000000).";
+    }
+    if (!selected.length) err.service = "يرجى اختيار خدمة واحدة على الأقل.";
+    if (!date) err.date = "يرجى اختيار التاريخ المفضل.";
 
     setErrors(err);
-    if (!Object.keys(err).length) setDone(g("name"));
+    if (!Object.keys(err).length) {
+      setDone({
+        name,
+        phone: contact,
+        service: selected.join("، "),
+      });
+    }
   };
 
   return (
@@ -1063,179 +959,196 @@ function Booking() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-20">
 
-          {/* Left — context */}
+          {/* Right/Top in Arabic — context */}
           <div>
             <Reveal>
-              <p className="eyebrow text-amber-300 flex items-center gap-2 mb-4">
+              <p className="eyebrow text-amber-300 flex items-center gap-2 mb-4 text-xs sm:text-sm font-semibold">
                 <span className="h-px w-6 bg-amber-300/60" />
-                Reservations
+                الحجوزات والاستفسارات
               </p>
             </Reveal>
             <Reveal delay={80}>
-              <h2 className="text-[clamp(2.2rem,5vw,4.5rem)] leading-none mb-6">
-                Reserve your{" "}
-                <em className="text-amber-300 not-italic italic">moment.</em>
+              <h2 className="text-[clamp(2.2rem,5vw,4.5rem)] font-bold leading-none mb-6">
+                احجزي{" "}
+                <em className="text-amber-300 not-italic font-bold">لحظتكِ الخاصة.</em>
               </h2>
             </Reveal>
             <Reveal delay={160}>
-              <p className="text-white/65 text-base sm:text-[1.0625rem] leading-relaxed mb-8 max-w-md">
-                Share your preferences and our concierge will be in touch to
-                confirm. Every booking begins with a personal welcome.
+              <p className="text-white/75 text-base sm:text-[1.0625rem] leading-relaxed mb-8 max-w-md">
+                شاركينا تفضيلاتكِ وسيتواصل معكِ فريق استقبال صالون ريد روج فوراً لتأكيد موعدكِ
+                وتجهيز الجناح الخاص بكِ.
               </p>
             </Reveal>
 
             {/* Salon image */}
-            <Reveal mask delay={200} className="aspect-[4/3] overflow-hidden mb-8">
-              <img src={salon} alt="Red ruj Salon " className="w-full h-full object-cover" loading="lazy" />
+            <Reveal mask delay={200} className="aspect-[4/3] overflow-hidden mb-8 rounded-sm">
+              <img src={salon} alt="صالون ريد روج الرياض" className="w-full h-full object-cover" loading="lazy" />
             </Reveal>
 
             {/* Contact info */}
             <Reveal delay={260}>
-              <div className="space-y-3 pt-6 border-t border-white/12">
-                <p className="eyebrow text-white/40 text-[0.65rem] mb-3">Prefer to call?</p>
+              <div className="space-y-4 pt-6 border-t border-white/12">
+                <p className="eyebrow text-white/50 text-xs mb-2">تفضلين الاتصال المباشر؟</p>
                 <a href={`tel:${CONTACT.phone}`}
-                  className="flex items-center gap-3 font-serif text-xl sm:text-2xl link-lux">
-                  <FiPhone className="w-4 h-4 text-amber-300 shrink-0" />
-                  {CONTACT.phone}
+                  className="flex items-center gap-3 font-serif text-xl sm:text-2xl font-bold link-lux w-fit"
+                  style={{ direction: "ltr" }}>
+                  <FiPhone className="w-5 h-5 text-amber-300 shrink-0" />
+                  <span>{CONTACT.phone}</span>
                 </a>
                 <a href={`mailto:${CONTACT.email}`}
-                  className="flex items-center gap-3 text-base text-white/65 link-lux mt-1">
+                  className="flex items-center gap-3 text-base text-white/75 link-lux w-fit">
                   <FiMail className="w-4 h-4 text-amber-300 shrink-0" />
-                  {CONTACT.email}
+                  <span>{CONTACT.email}</span>
                 </a>
               </div>
             </Reveal>
           </div>
 
-          {/* Right — form */}
+          {/* Left/Form in Arabic */}
           <Reveal delay={120}>
-            {/* Fresha primary booking CTA */}
-            <a href={FRESHA_URL} target="_blank" rel="noopener noreferrer"
-              className="btn-white w-full !py-4 text-[0.74rem] flex items-center justify-center gap-2.5 mb-4">
-              <FiExternalLink className="w-4 h-4 shrink-0" />
-              Book Instantly on Fresha
+            {/* Direct WhatsApp Quick Booking Button */}
+            <a href={CONTACT.whatsapp} target="_blank" rel="noopener noreferrer"
+              className="btn-white w-full !py-4 text-xs sm:text-sm font-bold flex items-center justify-center gap-2.5 mb-4 shadow-lg hover:shadow-xl transition-all">
+              <FaWhatsapp className="w-5 h-5 text-emerald-600 shrink-0" />
+              <span>حجز فوري ومباشر عبر واتساب</span>
             </a>
+
             <div className="flex items-center gap-3 mb-6">
               <div className="flex-1 h-px bg-white/15" />
-              <span className="eyebrow text-white/35 text-[0.6rem]">or send an enquiry below</span>
+              <span className="eyebrow text-white/40 text-[0.65rem] font-medium">أو أرسلي طلب الحجز من النموذج أدناه</span>
               <div className="flex-1 h-px bg-white/15" />
             </div>
 
             {done ? (
               /* Success state */
-              <div className="border border-amber-300/30 bg-amber-300/5 p-8 sm:p-10 flex flex-col items-start" role="status">
+              <div className="border border-amber-300/30 bg-amber-300/5 p-8 sm:p-10 flex flex-col items-start rounded-sm" role="status">
                 <div className="w-12 h-12 rounded-full bg-amber-300/20 flex items-center justify-center mb-6">
                   <FiCheck className="w-6 h-6 text-amber-300" />
                 </div>
-                <p className="eyebrow text-amber-300 text-[0.68rem] mb-3">Request Received</p>
-                <h3 className="font-serif text-3xl sm:text-4xl text-white mb-4">Merci, {done}.</h3>
-                <p className="text-white/65 text-sm sm:text-base leading-relaxed mb-3">
-                  Your preferences have been noted. Our team will be in touch shortly to confirm.
+                <p className="eyebrow text-amber-300 text-xs font-semibold mb-2">تم استلام طلبكِ بنجاح</p>
+                <h3 className="font-serif text-3xl sm:text-4xl font-bold text-white mb-4">أهلاً بكِ، {done.name}.</h3>
+                <p className="text-white/80 text-sm sm:text-base leading-relaxed mb-4">
+                  تم تسجيل رغبتكِ في حجز ({done.service}). سيتواصل معكِ فريق صالون ريد روج في أقرب وقت لتأكيد الموعد والتفاصيل.
                 </p>
-                <p className="text-xs text-white/35 border border-white/10 p-3 mb-8">
-                  <strong className="font-normal text-amber-300/70">Note:</strong> This is a demonstration form —
-                  no real appointment has been sent to the salon.
-                </p>
+
+                {/* Direct WhatsApp confirmation option */}
+                <a
+                  href={`https://wa.me/966500000000?text=${encodeURIComponent(
+                    `مرحباً صالون ريد روج، قمت بطلب حجز موعد باسم (${done.name}) لخدمة (${done.service}). أود تأكيد الموعد.`
+                  )}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold px-5 py-3 rounded text-xs sm:text-sm mb-6 transition-colors"
+                >
+                  <FaWhatsapp className="w-4 h-4" />
+                  <span>تأكيد الموعد عبر واتساب الآن</span>
+                </a>
+
                 <button onClick={() => { setDone(null); setSelected([]); setErrors({}); }}
-                  className="btn-outline border-white/50 text-white text-[0.72rem]">
-                  Make Another Request
+                  className="btn-outline border-white/50 text-white text-xs font-medium">
+                  إرسال طلب موعد آخر
                 </button>
               </div>
             ) : (
-              <form onSubmit={submit} noValidate className="space-y-7">
+              <form onSubmit={submit} noValidate className="space-y-6">
 
                 {/* Name */}
                 <div>
-                  <label htmlFor="f-name" className="eyebrow text-white/50 text-[0.65rem] flex items-center gap-1.5 mb-1.5">
-                    <FiUser className="w-3 h-3" /> Full Name *
+                  <label htmlFor="f-name" className="eyebrow text-white/60 text-xs flex items-center gap-1.5 mb-1.5 font-medium">
+                    <FiUser className="w-3.5 h-3.5 text-amber-300" /> الاسم الكريم *
                   </label>
-                  <input id="f-name" name="name" placeholder="Your full name"
-                    className="field" autoComplete="name" />
-                  {errors.name && <p className="mt-1.5 text-xs text-rose-400" role="alert">{errors.name}</p>}
+                  <input id="f-name" name="name" placeholder="اكتبي اسمكِ الكريم"
+                    className="field text-right" autoComplete="name" />
+                  {errors.name && <p className="mt-1.5 text-xs text-rose-400 font-medium" role="alert">{errors.name}</p>}
                 </div>
 
                 {/* Contact */}
                 <div>
-                  <label htmlFor="f-contact" className="eyebrow text-white/50 text-[0.65rem] flex items-center gap-1.5 mb-1.5">
-                    <FiMail className="w-3 h-3" /> Email or Phone *
+                  <label htmlFor="f-contact" className="eyebrow text-white/60 text-xs flex items-center gap-1.5 mb-1.5 font-medium">
+                    <FiPhone className="w-3.5 h-3.5 text-amber-300" /> رقم الجوال أو البريد الإلكتروني *
                   </label>
-                  <input id="f-contact" name="contact" placeholder="email@example.com or +1 555 000"
-                    className="field" />
-                  {errors.contact && <p className="mt-1.5 text-xs text-rose-400" role="alert">{errors.contact}</p>}
+                  <input id="f-contact" name="contact" placeholder="050 000 0000 أو info@example.com"
+                    className="field text-right" />
+                  {errors.contact && <p className="mt-1.5 text-xs text-rose-400 font-medium" role="alert">{errors.contact}</p>}
                 </div>
 
                 {/* Service chips */}
                 <div>
-                  <p className="eyebrow text-white/50 text-[0.65rem] flex items-center gap-1.5 mb-3">
-                    <FiScissors className="w-3 h-3" /> Select Service(s) *
+                  <p className="eyebrow text-white/60 text-xs flex items-center gap-1.5 mb-3 font-medium">
+                    <FiScissors className="w-3.5 h-3.5 text-amber-300" /> اختاري الخدمة المطلوبة *
                   </p>
                   <div className="flex flex-wrap gap-2">
-                    {[...SERVICES.map(s => s.title), "The Signature Experience"].map(name => (
+                    {[...SERVICES.map(s => s.title), "الباقة الملكية الخاصة"].map(name => (
                       <button key={name} type="button" onClick={() => toggle(name)}
                         aria-pressed={selected.includes(name)}
-                        className={`px-3.5 py-2 text-[0.68rem] tracking-wider uppercase font-medium border transition-all duration-250 ${
+                        className={`px-3.5 py-2 text-xs font-semibold border transition-all duration-200 rounded-sm ${
                           selected.includes(name)
                             ? "bg-amber-300 text-neutral-900 border-amber-300"
-                            : "border-white/20 text-white/55 hover:border-amber-300/50 hover:text-white"
+                            : "border-white/20 text-white/70 hover:border-amber-300/50 hover:text-white"
                         }`}>
                         {name}
                       </button>
                     ))}
                   </div>
-                  {errors.service && <p className="mt-2 text-xs text-rose-400" role="alert">{errors.service}</p>}
+                  {errors.service && <p className="mt-2 text-xs text-rose-400 font-medium" role="alert">{errors.service}</p>}
                 </div>
 
-                {/* Stylist */}
+                {/* Category preference */}
                 <div>
-                  <label htmlFor="f-stylist" className="eyebrow text-white/50 text-[0.65rem] flex items-center gap-1.5 mb-1.5">
-                    <FiUser className="w-3 h-3" /> Preferred Stylist
+                  <label htmlFor="f-dept" className="eyebrow text-white/60 text-xs flex items-center gap-1.5 mb-1.5 font-medium">
+                    <FiStar className="w-3.5 h-3.5 text-amber-300" /> القسم المطلوب
                   </label>
-                  <select id="f-stylist" name="stylist" className="field">
-                    <option value="">No preference</option>
-                    {TEAM.map(m => <option key={m.name}>{m.name}</option>)}
+                  <select id="f-dept" name="department" className="field text-right">
+                    <option value="">أي قسم متاح</option>
+                    <option value="شعر">قسم تصفيف وتسريحات الشعر</option>
+                    <option value="صبغات">قسم الصبغات والبالياج</option>
+                    <option value="عرائس">باقات العرائس الملكية</option>
+                    <option value="بشرة">قسم العناية بالبشرة والمساج</option>
+                    <option value="أظافر">قسم الأظافر والبديكير الروسي</option>
+                    <option value="مكياج">قسم المكياج والسهرات</option>
                   </select>
                 </div>
 
                 {/* Date + Time */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
-                    <label htmlFor="f-date" className="eyebrow text-white/50 text-[0.65rem] flex items-center gap-1.5 mb-1.5">
-                      <FiCalendar className="w-3 h-3" /> Preferred Date *
+                    <label htmlFor="f-date" className="eyebrow text-white/60 text-xs flex items-center gap-1.5 mb-1.5 font-medium">
+                      <FiCalendar className="w-3.5 h-3.5 text-amber-300" /> التاريخ المفضل *
                     </label>
                     <input id="f-date" name="date" type="date"
                       className="field [color-scheme:dark]" />
-                    {errors.date && <p className="mt-1.5 text-xs text-rose-400" role="alert">{errors.date}</p>}
+                    {errors.date && <p className="mt-1.5 text-xs text-rose-400 font-medium" role="alert">{errors.date}</p>}
                   </div>
                   <div>
-                    <label htmlFor="f-time" className="eyebrow text-white/50 text-[0.65rem] flex items-center gap-1.5 mb-1.5">
-                      <FiClock className="w-3 h-3" /> Time Preference
+                    <label htmlFor="f-time" className="eyebrow text-white/60 text-xs flex items-center gap-1.5 mb-1.5 font-medium">
+                      <FiClock className="w-3.5 h-3.5 text-amber-300" /> الوقت المفضل
                     </label>
-                    <select id="f-time" name="time" className="field">
-                      <option>Morning  (9am – 12pm)</option>
-                      <option>Afternoon (12pm – 4pm)</option>
-                      <option>Evening  (4pm – 8pm)</option>
+                    <select id="f-time" name="time" className="field text-right">
+                      <option>فترة بعد الظهر (1:00 م – 4:00 م)</option>
+                      <option>فترة المساء (4:00 م – 7:00 م)</option>
+                      <option>فترة الليل (7:00 م – 10:00 م)</option>
                     </select>
                   </div>
                 </div>
 
                 {/* Message */}
                 <div>
-                  <label htmlFor="f-msg" className="eyebrow text-white/50 text-[0.65rem] mb-1.5 block">
-                    Additional Notes
+                  <label htmlFor="f-msg" className="eyebrow text-white/60 text-xs mb-1.5 block font-medium">
+                    ملاحظات أو طلبات خاصة
                   </label>
-                  <textarea id="f-msg" name="message" rows={3} placeholder="Allergies, preferences, or anything we should know…"
-                    className="field resize-none" />
+                  <textarea id="f-msg" name="message" rows={3} placeholder="أي تفاصيل ترغبين بمشاركتها معنا قبل الموعد..."
+                    className="field resize-none text-right" />
                 </div>
 
                 {/* Submit */}
                 <div className="pt-2 space-y-3">
                   <button type="submit"
-                    className="btn-white w-full !py-4 text-[0.72rem] flex items-center justify-center gap-2">
+                    className="btn-white w-full !py-4 text-xs sm:text-sm font-bold flex items-center justify-center gap-2">
                     <FiCalendar className="w-4 h-4 shrink-0" />
-                    Reserve Your Experience
+                    إرسال طلب حجز الموعد
                   </button>
-                  <p className="text-center text-[0.72rem] text-white/30">
-                    Personalised service · Demo form · No data is transmitted
+                  <p className="text-center text-xs text-white/40">
+                    خدمة خاصة ومتميزة في صالون ريد روج · الرياض
                   </p>
                 </div>
               </form>
@@ -1248,7 +1161,7 @@ function Booking() {
 }
 
 /* ══════════════════════════════════════════════════════════════
-   CONTACT
+   CONTACT & LOCATION
 ══════════════════════════════════════════════════════════════ */
 
 function Contact() {
@@ -1258,36 +1171,48 @@ function Contact() {
         {/* Info */}
         <div className="px-4 sm:px-6 lg:px-10 py-20 sm:py-28 lg:col-span-5">
           <Reveal>
-            <p className="eyebrow text-accent flex items-center gap-2 mb-4">
+            <p className="eyebrow text-accent flex items-center gap-2 mb-4 text-xs sm:text-sm font-semibold">
               <span className="h-px w-6 bg-accent/60" />
-              Location & Contact
+              الموقع والتواصل
             </p>
           </Reveal>
           <Reveal delay={80}>
-            <h2 className="text-[clamp(2.2rem,4vw,4rem)] leading-none mb-8">Visit the Maison</h2>
+            <h2 className="text-[clamp(2.2rem,4vw,3.8rem)] font-bold leading-none mb-8">
+              زيارة {BRAND.nameAr}
+            </h2>
           </Reveal>
 
           <Reveal delay={140}>
             <div className="space-y-4 mb-8">
               <a href={`tel:${CONTACT.phone}`}
                 className="flex items-center gap-3 text-foreground hover:text-accent transition-colors group">
-                <div className="w-9 h-9 shrink-0 border border-border flex items-center justify-center text-accent group-hover:border-accent transition-colors">
+                <div className="w-10 h-10 shrink-0 border border-border flex items-center justify-center text-accent group-hover:border-accent transition-colors rounded-sm">
                   <FiPhone className="w-4 h-4" />
                 </div>
-                <span className="text-sm sm:text-base">{CONTACT.phone}</span>
+                <span className="text-sm sm:text-base font-semibold" style={{ direction: "ltr" }}>{CONTACT.phone}</span>
               </a>
+
+              <a href={CONTACT.whatsapp} target="_blank" rel="noopener noreferrer"
+                className="flex items-center gap-3 text-foreground hover:text-emerald-600 transition-colors group">
+                <div className="w-10 h-10 shrink-0 border border-border flex items-center justify-center text-emerald-600 group-hover:border-emerald-600 transition-colors rounded-sm">
+                  <FaWhatsapp className="w-4 h-4" />
+                </div>
+                <span className="text-sm sm:text-base font-semibold">محادثة واتساب سريعة</span>
+              </a>
+
               <a href={`mailto:${CONTACT.email}`}
                 className="flex items-center gap-3 text-foreground hover:text-accent transition-colors group">
-                <div className="w-9 h-9 shrink-0 border border-border flex items-center justify-center text-accent group-hover:border-accent transition-colors">
+                <div className="w-10 h-10 shrink-0 border border-border flex items-center justify-center text-accent group-hover:border-accent transition-colors rounded-sm">
                   <FiMail className="w-4 h-4" />
                 </div>
                 <span className="text-sm sm:text-base">{CONTACT.email}</span>
               </a>
+
               <div className="flex items-center gap-3 text-muted-foreground">
-                <div className="w-9 h-9 shrink-0 border border-border flex items-center justify-center text-accent">
+                <div className="w-10 h-10 shrink-0 border border-border flex items-center justify-center text-accent rounded-sm">
                   <FiMapPin className="w-4 h-4" />
                 </div>
-                <span className="text-sm sm:text-base">{CONTACT.address}</span>
+                <span className="text-sm sm:text-base leading-snug">{CONTACT.address}</span>
               </div>
             </div>
           </Reveal>
@@ -1295,9 +1220,10 @@ function Contact() {
           {/* Hours */}
           <Reveal delay={200}>
             <div className="border-t border-border">
+              <div className="py-2.5 text-xs text-accent font-bold eyebrow">أوقات العمل في الرياض</div>
               {HOURS.map(([day, time]) => (
-                <div key={day} className="flex items-center justify-between py-3.5 border-b border-border text-sm sm:text-base">
-                  <dt className="text-foreground">{day}</dt>
+                <div key={day} className="flex items-center justify-between py-3 border-b border-border text-sm sm:text-base">
+                  <dt className="text-foreground font-medium">{day}</dt>
                   <dd className="text-muted-foreground">{time}</dd>
                 </div>
               ))}
@@ -1307,24 +1233,26 @@ function Contact() {
           {/* Social */}
           <Reveal delay={280}>
             <div className="mt-8 flex items-center gap-4">
-              <p className="eyebrow text-muted-foreground text-[0.65rem]">Follow</p>
-              {[
-                { icon: <FiInstagram className="w-4 h-4" />, href: CONTACT.instagram, label: "Instagram" },
-                { icon: <FaPinterestP className="w-4 h-4" />, href: CONTACT.pinterest, label: "Pinterest" },
-                { icon: <FaTiktok className="w-4 h-4" />,    href: CONTACT.tiktok,    label: "TikTok" },
-              ].map(({ icon, href, label }) => (
-                <a key={label} href={href} aria-label={label}
-                  className="w-9 h-9 border border-border flex items-center justify-center text-muted-foreground hover:border-accent hover:text-accent transition-colors">
-                  {icon}
-                </a>
-              ))}
+              <p className="eyebrow text-muted-foreground text-xs font-semibold">تابعينا:</p>
+              <a href={CONTACT.instagram} target="_blank" rel="noopener noreferrer" aria-label="حساب إنستغرام"
+                className="w-10 h-10 border border-border flex items-center justify-center text-muted-foreground hover:border-accent hover:text-accent transition-colors rounded-sm">
+                <FiInstagram className="w-4 h-4" />
+              </a>
+              <a href={CONTACT.whatsapp} target="_blank" rel="noopener noreferrer" aria-label="واتساب"
+                className="w-10 h-10 border border-border flex items-center justify-center text-muted-foreground hover:border-emerald-500 hover:text-emerald-500 transition-colors rounded-sm">
+                <FaWhatsapp className="w-4 h-4" />
+              </a>
+              <a href={CONTACT.tiktok} target="_blank" rel="noopener noreferrer" aria-label="تيك توك"
+                className="w-10 h-10 border border-border flex items-center justify-center text-muted-foreground hover:border-accent hover:text-accent transition-colors rounded-sm">
+                <FaTiktok className="w-4 h-4" />
+              </a>
             </div>
           </Reveal>
         </div>
 
         {/* Salon image */}
         <Reveal mask delay={120} className="min-h-[320px] sm:min-h-[420px] lg:col-span-7">
-          <img src={salon} alt="Red ruj Salon interior"
+          <img src={salon} alt="صالون ريد روج الداخلي"
             className="w-full h-full object-cover min-h-[320px] sm:min-h-[420px]" loading="lazy" />
         </Reveal>
       </div>
@@ -1345,67 +1273,94 @@ function Footer() {
         {/* Top */}
         <div className="flex flex-col gap-8 sm:flex-row sm:items-end sm:justify-between pb-14 sm:pb-16 border-b border-white/10">
           <Reveal>
-            <h2 className="text-[clamp(2.4rem,6.5vw,6.5rem)] leading-[0.93]">
-              The Art of<br />
-              <em className="text-amber-300 not-italic italic">Feeling Beautiful.</em>
-            </h2>          </Reveal>
+            <h2 className="text-[clamp(2.4rem,6vw,5.5rem)] font-bold leading-[1.05]">
+              فن الجمال<br />
+              <em className="text-amber-300 not-italic font-bold">والأناقة الاستثنائية.</em>
+            </h2>
+          </Reveal>
           <Reveal delay={120}>
-            <a href={FRESHA_URL} target="_blank" rel="noopener noreferrer"
-              className="btn-white self-start shrink-0 flex items-center gap-2 !py-3.5">
-              <FiExternalLink className="w-4 h-4 shrink-0" />
-              Book on Fresha
+            <a href="#book"
+              className="btn-white self-start shrink-0 flex items-center gap-2 !py-3.5 !px-7 font-bold text-xs sm:text-sm">
+              <FiCalendar className="w-4 h-4 shrink-0" />
+              احجزي موعدكِ الآن
             </a>
           </Reveal>
         </div>
 
         {/* Grid */}
-        <div className="grid gap-10 py-12 sm:py-14 grid-cols-2 sm:grid-cols-4">
+        <div className="grid gap-10 py-12 sm:py-14 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
           <div>
-            <p className="font-serif text-lg tracking-[0.2em] mb-4">Red ruj Salon</p>
-            <p className="text-white/45 text-sm leading-relaxed">
-              A private spa for hair, skin and artistry in Riyadh.
+            <p className="font-serif text-xl font-bold tracking-wide mb-2">{BRAND.nameEn}</p>
+            <p className="text-amber-300 font-medium text-sm mb-4">{BRAND.nameAr}</p>
+            <p className="text-white/60 text-sm leading-relaxed">
+              صالون نسائي متكامل للشعر، البشرة، الأظافر والمكياج في الرياض — نسعد بزيارتكِ وتقديم أرقى درجات العناية.
             </p>
           </div>
+
           <div>
-            <p className="eyebrow text-white/35 text-[0.6rem] mb-4">Navigate</p>
-            <ul className="space-y-2.5">
-              {[["Services","#services"],["Gallery","#gallery"],["Our Story","#story"],["Experts","#experts"],["Contact","#contact"]].map(([l,h]) => (
-                <li key={h}><a href={h} className="text-sm text-white/60 link-lux hover:text-white transition-colors">{l}</a></li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <p className="eyebrow text-white/35 text-[0.6rem] mb-4">Follow</p>
+            <p className="eyebrow text-white/40 text-xs font-semibold mb-4">أقسام الموقع</p>
             <ul className="space-y-2.5">
               {[
-                [<FiInstagram className="w-3.5 h-3.5 shrink-0" />, "Instagram", CONTACT.instagram],
-                [<FaPinterestP className="w-3.5 h-3.5 shrink-0" />, "Pinterest", CONTACT.pinterest],
-                [<FaTiktok className="w-3.5 h-3.5 shrink-0" />, "TikTok", CONTACT.tiktok],
-              ].map(([icon, label, href]) => (
-                <li key={label as string}>
-                  <a href={href as string} className="flex items-center gap-2 text-sm text-white/60 hover:text-white transition-colors">
-                    {icon as ReactNode}{label as string}
+                ["الخدمات والأسعار", "#services"],
+                ["معرض الأعمال", "#gallery"],
+                ["عن صالون ريد روج", "#story"],
+                ["حجز موعد", "#book"],
+                ["الموقع والتواصل", "#contact"],
+              ].map(([l, h]) => (
+                <li key={h}>
+                  <a href={h} className="text-sm text-white/70 link-lux hover:text-white transition-colors">
+                    {l}
                   </a>
                 </li>
               ))}
             </ul>
           </div>
+
           <div>
-            <p className="eyebrow text-white/35 text-[0.6rem] mb-4">Visit</p>
-            <address className="not-italic space-y-2">
-              <p className="text-sm text-white/55 leading-snug">{CONTACT.address}</p>
-              <p className="text-sm text-white/55">{CONTACT.phone}</p>
-              <p className="text-sm text-white/55">{CONTACT.email}</p>
+            <p className="eyebrow text-white/40 text-xs font-semibold mb-4">التواصل الاجتماعي</p>
+            <ul className="space-y-2.5">
+              <li>
+                <a href={CONTACT.instagram} target="_blank" rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-sm text-white/70 hover:text-amber-300 transition-colors">
+                  <FiInstagram className="w-4 h-4 text-amber-300 shrink-0" />
+                  <span>إنستغرام: @red_ruj_salon</span>
+                </a>
+              </li>
+              <li>
+                <a href={CONTACT.whatsapp} target="_blank" rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-sm text-white/70 hover:text-emerald-400 transition-colors">
+                  <FaWhatsapp className="w-4 h-4 text-emerald-400 shrink-0" />
+                  <span>واتساب مباشر</span>
+                </a>
+              </li>
+              <li>
+                <a href={CONTACT.tiktok} target="_blank" rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-sm text-white/70 hover:text-white transition-colors">
+                  <FaTiktok className="w-4 h-4 shrink-0" />
+                  <span>تيك توك</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <p className="eyebrow text-white/40 text-xs font-semibold mb-4">العنوان والتواصل</p>
+            <address className="not-italic space-y-2 text-sm text-white/60">
+              <p className="leading-snug">{CONTACT.address}</p>
+              <p style={{ direction: "ltr", textAlign: "right" }}>{CONTACT.phone}</p>
+              <p>{CONTACT.email}</p>
             </address>
           </div>
         </div>
 
         {/* Bottom bar */}
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pt-6 border-t border-white/10">
-          <p className="text-[0.7rem] text-white/30">© {year} Red ruj Salon. All rights reserved.</p>
+          <p className="text-xs text-white/40">
+            © {year} {BRAND.nameEn} ({BRAND.nameAr}). جميع الحقوق محفوظة.
+          </p>
           <div className="flex gap-5">
-            <a href="#" className="text-[0.7rem] text-white/30 link-lux hover:text-white/60 transition-colors">Privacy</a>
-            <a href="#" className="text-[0.7rem] text-white/30 link-lux hover:text-white/60 transition-colors">Terms</a>
+            <a href="#top" className="text-xs text-white/40 link-lux hover:text-white/70 transition-colors">الخصوصية</a>
+            <a href="#top" className="text-xs text-white/40 link-lux hover:text-white/70 transition-colors">الشروط والأحكام</a>
           </div>
         </div>
       </div>
@@ -1414,7 +1369,7 @@ function Footer() {
 }
 
 /* ══════════════════════════════════════════════════════════════
-   PAGE
+   MAIN PAGE
 ══════════════════════════════════════════════════════════════ */
 
 function Index() {
@@ -1426,8 +1381,6 @@ function Index() {
         <Services />
         <Gallery />
         <Story />
-        <Testimonials />
-        <Experts />
         <Booking />
         <Contact />
       </main>
