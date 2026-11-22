@@ -47,17 +47,17 @@ import nails from "@/assets/nails.jpg";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "صالون ريد روج | Red ruj Salon — الرياض، المملكة العربية السعودية" },
+      { title: "صالون وهلة أولى للتزيين النسائي | Wahla Spa — الرياض، المملكة العربية السعودية" },
       {
         name: "description",
         content:
-          "صالون ريد روج (Red ruj Salon) النسائي الفاخر في الرياض — خدمات تصفيف وصبغات الشعر، العناية بالبشرة، الأظافر، والمكياج في أجنحة خاصة تسودها الخصوصية التامة والراحة.",
+          "صالون وهلة أولى للتزيين النسائي (Wahla Spa) الفاخر في الرياض — خدمات تصفيف وصبغات الشعر، العناية بالبشرة، الأظافر، والمكياج في أجنحة خاصة تسودها الخصوصية التامة والراحة.",
       },
-      { property: "og:title", content: "صالون ريد روج | Red ruj Salon" },
+      { property: "og:title", content: "صالون وهلة أولى للتزيين النسائي | Wahla Spa" },
       {
         property: "og:description",
         content:
-          "صالون نسائي فاخر للشعر، البشرة، الأظافر والمكياج في الرياض — احجزي موعدكِ الآن لتجربة جمال استثنائية.",
+          "صالون نسائي فاخر للشعر، البشرة، الأظافر والمكياج في الرياض — احجزي موعدكِ الآن لتجربة جمال استثنائية في صالون وهلة أولى.",
       },
     ],
   }),
@@ -69,19 +69,20 @@ export const Route = createFileRoute("/")({
 ══════════════════════════════════════════════════════════════ */
 
 const BRAND = {
-  nameEn: "Red ruj Salon",
-  nameAr: "صالون ريد روج",
+  nameEn: "Wahla Spa",
+  nameAr: "صالون وهلة أولى للتزيين النسائي",
+  shortName: "صالون وهلة أولى",
   tagline: "فن الجمال والأناقة الهادئة",
 };
 
 const CONTACT = {
-  phone: "+966 50 000 0000",
-  phoneDisplay: "050 000 0000",
-  email: "info@redrujsalon.com",
+  phone: "+966 54 734 3934",
+  phoneDisplay: "054 734 3934",
+  email: "info@wahlaspa.com",
   address: "المملكة العربية السعودية، الرياض — حي العقيق، طريق الأمير محمد بن سلمان",
-  instagram: "https://www.instagram.com/red_ruj_salon/?hl=en",
+  instagram: "https://www.instagram.com/wahlaspa/",
   whatsapp:
-    "https://wa.me/966500000000?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D8%B5%D8%A7%D9%84%D9%88%D9%86%20%D8%B1%D9%8A%D8%AF%20%D8%B1%D9%88%D8%AC%20(Red%20ruj%20Salon)%D8%8C%20%D8%A3%D9%88%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D8%AD%D8%AC%D8%B2%20%D9%85%D9%88%D8%B9%D8%AF.",
+    "https://api.whatsapp.com/send/?phone=966547343934&text&type=phone_number&app_absent=0&utm_source=ig",
   tiktok: "https://www.tiktok.com",
 };
 
@@ -177,7 +178,7 @@ const GALLERY_ITEMS = [
   { id: "g6",  src: nails,   fallback: nails,   alt: "مانيكير روسي راقٍ",          cat: "الأظافر",  title: "أظافر أنيقة وهادئة",  span: "col-span-1 md:col-span-4", aspect: "aspect-square" },
   { id: "g7",  src: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=900&q=80", fallback: facial, alt: "عناية بالبشرة",  cat: "البشرة",   title: "ترطيب وتغذية مكثفة",  span: "col-span-1 md:col-span-4", aspect: "aspect-square" },
   { id: "g8",  src: heroDesktop, fallback: heroDesktop, alt: "إطلالة مكياج مميزة", cat: "المكياج", title: "جمال الملامح والتألق", span: "col-span-1 md:col-span-7", aspect: "aspect-[16/9]" },
-  { id: "g9",  src: salon,   fallback: salon,   alt: "أجواء صالون ريد روج",            cat: "الصالون",  title: "أجواء الصالون الفاخرة",         span: "col-span-1 md:col-span-5", aspect: "aspect-[4/3]" },
+  { id: "g9",  src: salon,   fallback: salon,   alt: "أجواء صالون وهلة أولى",            cat: "الصالون",  title: "أجواء الصالون الفاخرة",         span: "col-span-1 md:col-span-5", aspect: "aspect-[4/3]" },
   { id: "g10", src: "https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=900&q=80", fallback: hair, alt: "قصة شعر عصرية", cat: "الشعر",   title: "قص وتشكيل متقن",      span: "col-span-1 md:col-span-5", aspect: "aspect-[4/3]" },
   { id: "g11", src: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=900&q=80", fallback: bridal, alt: "عروس متألقة", cat: "العرائس", title: "أناقة العروس الملكية",    span: "col-span-1 md:col-span-7", aspect: "aspect-[16/9]" },
   { id: "g12", src: "https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=900&q=80",  fallback: hair, alt: "صبغة شعر بنية",  cat: "الصبغات", title: "تدرجات الشوكولاتة والكراميل",      span: "col-span-1 md:col-span-5", aspect: "aspect-[4/3]" },
@@ -282,10 +283,10 @@ function Header() {
           {/* Logo */}
           <a href="#top" className="flex flex-col leading-none shrink-0 group">
             <span className="font-serif text-lg sm:text-2xl font-bold tracking-wide">
-              {BRAND.nameEn}
+              {BRAND.nameAr}
             </span>
             <span className="text-[0.68rem] text-accent font-medium mt-1">
-              {BRAND.nameAr}
+              {BRAND.nameEn} · للتزيين النسائي
             </span>
           </a>
 
@@ -349,11 +350,11 @@ function Header() {
           padding: "1rem 1.25rem", borderBottom: "1px solid #e5ddd4", flexShrink: 0,
         }}>
           <div>
-            <div style={{ fontFamily: "Cairo, Georgia, serif", fontSize: "1.2rem", fontWeight: "700", color: "#1a1410" }}>
-              {BRAND.nameEn}
+            <div style={{ fontFamily: "Cairo, Georgia, serif", fontSize: "1.1rem", fontWeight: "700", color: "#1a1410" }}>
+              {BRAND.nameAr}
             </div>
             <div style={{ fontSize: "0.75rem", color: "#b8914a", fontWeight: "500" }}>
-              {BRAND.nameAr}
+              {BRAND.nameEn}
             </div>
           </div>
           <button
@@ -430,7 +431,7 @@ function Header() {
             style={{ display: "flex", alignItems: "center", gap: "0.5rem", fontSize: "0.9rem", color: "#b8914a", textDecoration: "none" }}
           >
             <FiInstagram style={{ width: "1.1rem", height: "1.1rem", flexShrink: 0 }} />
-            حساب إنستغرام: @red_ruj_salon
+            حساب إنستغرام: @wahlaspa
           </a>
         </div>
       </div>
@@ -449,7 +450,7 @@ function Hero() {
 
       {/* Desktop background (landscape) — hidden on mobile */}
       <div className="absolute inset-0 hidden sm:block">
-        <img src={heroDesktop} alt="صالون ريد روج - الرياض"
+        <img src={heroDesktop} alt="صالون وهلة أولى للتزيين النسائي - الرياض"
           className="h-full w-full object-cover object-center scale-[1.04]"
           style={{ animation: "heroZoom 12s ease-in-out infinite alternate" }}
           loading="eager" aria-hidden />
@@ -457,7 +458,7 @@ function Hero() {
 
       {/* Mobile background (portrait) — shown only on mobile */}
       <div className="absolute inset-0 block sm:hidden">
-        <img src={heroMobile} alt="صالون ريد روج النسائي"
+        <img src={heroMobile} alt="صالون وهلة أولى للتزيين النسائي"
           className="h-full w-full object-cover object-top"
           loading="eager" aria-hidden />
       </div>
@@ -725,7 +726,7 @@ function Gallery() {
             <a href={CONTACT.instagram} target="_blank" rel="noopener noreferrer"
               className="eyebrow link-lux text-muted-foreground hover:text-accent flex items-center gap-2 text-xs sm:text-sm font-semibold">
               <FiInstagram className="w-4 h-4 text-accent" />
-              تابعي حسابنا على إنستغرام (@red_ruj_salon)
+              تابعي حسابنا على إنستغرام (@wahlaspa)
             </a>
           </Reveal>
         </div>
@@ -853,7 +854,7 @@ function Story() {
           {/* Image stack */}
           <div className="relative mt-4 lg:mt-0">
             <Reveal mask className="aspect-[4/5] overflow-hidden shadow-xl rounded-sm">
-              <img src={hair} alt="العناية بالشعر في صالون ريد روج"
+              <img src={hair} alt="العناية بالشعر في صالون وهلة أولى"
                 className="w-full h-full object-cover" loading="lazy" />
             </Reveal>
             {/* Floating card */}
@@ -861,7 +862,7 @@ function Story() {
               className="absolute -bottom-6 -right-4 sm:-right-8 z-10 w-[70%] sm:w-[60%] bg-card border border-border shadow-xl p-4 sm:p-5 rounded-sm">
               <div className="flex items-center gap-3 mb-2">
                 <div className="h-10 w-10 sm:h-12 sm:w-12 overflow-hidden shrink-0 rounded-sm">
-                  <img src={salon} alt="صالون ريد روج الرياض" className="w-full h-full object-cover" loading="lazy" />
+                  <img src={salon} alt="صالون وهلة أولى الرياض" className="w-full h-full object-cover" loading="lazy" />
                 </div>
                 <div>
                   <p className="font-serif text-sm sm:text-base font-bold leading-tight text-foreground">أجنحة خاصة ومستقلة</p>
@@ -975,14 +976,14 @@ function Booking() {
             </Reveal>
             <Reveal delay={160}>
               <p className="text-white/75 text-base sm:text-[1.0625rem] leading-relaxed mb-8 max-w-md">
-                شاركينا تفضيلاتكِ وسيتواصل معكِ فريق استقبال صالون ريد روج فوراً لتأكيد موعدكِ
+                شاركينا تفضيلاتكِ وسيتواصل معكِ فريق استقبال صالون وهلة أولى فوراً لتأكيد موعدكِ
                 وتجهيز الجناح الخاص بكِ.
               </p>
             </Reveal>
 
             {/* Salon image */}
             <Reveal mask delay={200} className="aspect-[4/3] overflow-hidden mb-8 rounded-sm">
-              <img src={salon} alt="صالون ريد روج الرياض" className="w-full h-full object-cover" loading="lazy" />
+              <img src={salon} alt="صالون وهلة أولى الرياض" className="w-full h-full object-cover" loading="lazy" />
             </Reveal>
 
             {/* Contact info */}
@@ -1028,14 +1029,14 @@ function Booking() {
                 <p className="eyebrow text-amber-300 text-xs font-semibold mb-2">تم استلام طلبكِ بنجاح</p>
                 <h3 className="font-serif text-3xl sm:text-4xl font-bold text-white mb-4">أهلاً بكِ، {done.name}.</h3>
                 <p className="text-white/80 text-sm sm:text-base leading-relaxed mb-4">
-                  تم تسجيل رغبتكِ في حجز ({done.service}). سيتواصل معكِ فريق صالون ريد روج في أقرب وقت لتأكيد الموعد والتفاصيل.
+                  تم تسجيل رغبتكِ في حجز ({done.service}). سيتواصل معكِ فريق صالون وهلة أولى في أقرب وقت لتأكيد الموعد والتفاصيل.
                 </p>
 
                 {/* Direct WhatsApp confirmation option */}
                 <a
-                  href={`https://wa.me/966500000000?text=${encodeURIComponent(
-                    `مرحباً صالون ريد روج، قمت بطلب حجز موعد باسم (${done.name}) لخدمة (${done.service}). أود تأكيد الموعد.`
-                  )}`}
+                  href={`https://api.whatsapp.com/send/?phone=966547343934&text=${encodeURIComponent(
+                    `مرحباً صالون وهلة أولى للتزيين النسائي، قمت بطلب حجز موعد باسم (${done.name}) لخدمة (${done.service}). أود تأكيد الموعد.`
+                  )}&type=phone_number&app_absent=0&utm_source=ig`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold px-5 py-3 rounded text-xs sm:text-sm mb-6 transition-colors"
@@ -1148,7 +1149,7 @@ function Booking() {
                     إرسال طلب حجز الموعد
                   </button>
                   <p className="text-center text-xs text-white/40">
-                    خدمة خاصة ومتميزة في صالون ريد روج · الرياض
+                    خدمة خاصة ومتميزة في صالون وهلة أولى للتزيين النسائي · الرياض
                   </p>
                 </div>
               </form>
@@ -1252,7 +1253,7 @@ function Contact() {
 
         {/* Salon image */}
         <Reveal mask delay={120} className="min-h-[320px] sm:min-h-[420px] lg:col-span-7">
-          <img src={salon} alt="صالون ريد روج الداخلي"
+          <img src={salon} alt="صالون وهلة أولى الداخلي"
             className="w-full h-full object-cover min-h-[320px] sm:min-h-[420px]" loading="lazy" />
         </Reveal>
       </div>
@@ -1303,7 +1304,7 @@ function Footer() {
               {[
                 ["الخدمات والأسعار", "#services"],
                 ["معرض الأعمال", "#gallery"],
-                ["عن صالون ريد روج", "#story"],
+                ["عن صالون وهلة أولى", "#story"],
                 ["حجز موعد", "#book"],
                 ["الموقع والتواصل", "#contact"],
               ].map(([l, h]) => (
@@ -1323,7 +1324,7 @@ function Footer() {
                 <a href={CONTACT.instagram} target="_blank" rel="noopener noreferrer"
                   className="flex items-center gap-2 text-sm text-white/70 hover:text-amber-300 transition-colors">
                   <FiInstagram className="w-4 h-4 text-amber-300 shrink-0" />
-                  <span>إنستغرام: @red_ruj_salon</span>
+                  <span>إنستغرام: @wahlaspa</span>
                 </a>
               </li>
               <li>

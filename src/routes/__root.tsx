@@ -129,10 +129,10 @@ function GlobalWhatsAppConcierge() {
     >
       {/* Floating Action Button */}
       <a
-        href="https://wa.me/966500000000?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D8%B5%D8%A7%D9%84%D9%88%D9%86%20%D8%B1%D9%8A%D8%AF%20%D8%B1%D9%88%D8%AC%20(Red%20ruj%20Salon)%D8%8C%20%D8%A3%D9%88%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D8%AD%D8%AC%D8%B2%20%D9%85%D9%88%D8%B9%D8%AF."
+        href="https://api.whatsapp.com/send/?phone=966547343934&text&type=phone_number&app_absent=0&utm_source=ig"
         target="_blank"
         rel="noopener noreferrer"
-        aria-label="تواصل عبر واتساب - صالون ريد روج"
+        aria-label="تواصل عبر واتساب - صالون وهلة أولى للتزيين النسائي"
         className="group relative flex h-13 w-13 sm:h-15 sm:w-15 items-center justify-center rounded-full bg-gradient-to-tr from-[#128C7E] via-[#25D366] to-[#2ecc71] text-white shadow-[0_8px_30px_rgba(37,211,102,0.45)] transition-all duration-300 hover:scale-105 hover:shadow-[0_12px_45px_rgba(37,211,102,0.7)] focus:outline-none focus:ring-4 focus:ring-emerald-400/50"
       >
         {/* Pulsing badge dot */}
